@@ -399,7 +399,7 @@ export function Reviews() {
 
           {/* WhatsApp Direct Review Submission Form - Redesigned to Luxury Atelier Theme */}
           <Reveal className="mt-20">
-            <div className="powder-card rounded-2xl border-2 border-primary/40 bg-[#161310]/95 backdrop-blur-xl p-6 sm:p-9 md:p-11 shadow-[0_20px_50px_rgba(0,0,0,0.7),0_0_30px_hsl(28_55%_58%/0.12)] ring-1 ring-primary/25 max-w-3xl mx-auto space-y-6">
+            <div className="powder-card rounded-2xl border-2 border-primary/40 bg-[#161310]/95 backdrop-blur-xl p-6 sm:p-9 md:p-11 shadow-[0_20px_50px_rgba(0,0,0,0.7),0_0_30px_hsl(28_55%_58%/0.12)] ring-1 ring-primary/25 w-full space-y-6">
               {/* Form Header */}
               <div className="border-b border-border/30 pb-5">
                 <div className="flex items-center justify-between mb-2">

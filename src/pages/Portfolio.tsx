@@ -1,6 +1,6 @@
-import { CylindricalGallery } from "@/components/CylindricalGallery";
 import { Reveal } from "@/components/Layout";
 import { BrushIcon, PaletteIcon } from "@/components/StudioEffects";
+import { WebGLPortfolioCarousel } from "@/components/WebGLPortfolioCarousel";
 
 export function Portfolio() {
   return (
@@ -20,14 +20,14 @@ export function Portfolio() {
             Portfolio
           </h1>
           <p className="text-muted-foreground text-base md:text-lg max-w-2xl leading-relaxed fade-in font-light">
-            An interactive 3D study in restraint, architectural precision, and quiet radiance. Spin through each couture bridal and event transformation.
+            An interactive cinematic gallery exploring our signature "Quiet Glow" aesthetics.
           </p>
         </div>
       </section>
 
-      {/* 3D Cylindrical Gallery inspired by Meng To / 21st.dev */}
+      {/* Cinematic WebGL Slider */}
       <Reveal>
-        <CylindricalGallery />
+        <WebGLPortfolioCarousel />
       </Reveal>
     </div>
   );
