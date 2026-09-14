@@ -67,8 +67,8 @@ export function Packages() {
       >
         <div
           className={cn(
-            "relative flex flex-col h-[555px] w-full rounded-xl transition-all duration-300 powder-card",
-            "border p-6 md:p-7 select-none overflow-visible",
+            "relative flex flex-col h-auto md:h-[555px] w-full rounded-xl transition-all duration-300 powder-card",
+            "border p-5 md:p-7 select-none overflow-visible",
             isFlyoutOpen ? "!z-30" : "z-10",
             isPopular
               ? "bg-[#181410] border-2 border-primary/70 shadow-[0_0_28px_hsl(28_55%_58%/0.22)] ring-1 ring-primary/40 hover:border-primary"
@@ -131,8 +131,8 @@ export function Packages() {
             </p>
           </div>
 
-          {/* ── SECTION 3: KEY INCLUSIONS & VIEW DETAILS BUTTON (Fixed ~235px) ── */}
-          <div className="h-[235px] flex flex-col justify-between py-3">
+          {/* ── SECTION 3: KEY INCLUSIONS & VIEW DETAILS BUTTON (Fixed ~235px desktop) ── */}
+          <div className="flex-1 md:h-[235px] flex flex-col justify-between py-3">
             <div>
               <p className="nav-label text-[10px] text-muted-foreground tracking-wider uppercase mb-2.5">
                 Key Inclusions:
@@ -286,22 +286,22 @@ export function Packages() {
 
   return (
     <div className="pb-0 relative" onClick={() => setActiveFlyout(null)}>
-      <section className="relative pt-12 md:pt-16 pb-4 md:pb-6 px-6 overflow-hidden">
-        <div className="absolute top-0 right-0 w-[500px] h-[400px]
+      <section className="relative pt-8 md:pt-16 pb-4 md:pb-6 px-4 md:px-6 overflow-hidden">
+        <div className="absolute top-0 right-0 w-[300px] md:w-[500px] h-[300px] md:h-[400px]
                         bg-[radial-gradient(ellipse,hsl(28_55%_58%/0.08)_0%,transparent_70%)]
                         pointer-events-none" />
         <div className="container mx-auto">
           {/* Page Header */}
-          <div className="flex items-center gap-3 mb-4 fade-in">
-            <BrushIcon className="w-5 h-5 text-primary" />
-            <span className="nav-label text-primary text-xs tracking-[0.25em] uppercase">
+          <div className="flex items-center gap-3 mb-3 md:mb-4 fade-in">
+            <BrushIcon className="w-4 h-4 md:w-5 md:h-5 text-primary" />
+            <span className="nav-label text-primary text-[10px] md:text-xs tracking-[0.2em] md:tracking-[0.25em] uppercase">
               Transparent Pricing & Inclusions
             </span>
           </div>
-          <h1 className="font-display text-5xl md:text-7xl font-light mb-4 fade-in">
+          <h1 className="font-display text-4xl sm:text-5xl md:text-7xl font-light mb-3 md:mb-4 fade-in">
             Packages
           </h1>
-          <p className="text-muted-foreground mb-10 max-w-2xl fade-in text-base md:text-lg leading-relaxed font-light">
+          <p className="text-muted-foreground mb-6 md:mb-10 max-w-2xl fade-in text-sm md:text-base lg:text-lg leading-relaxed font-light">
             Every package is bespoke and tailored to your celebration. Clear tiers with no hidden charges. Explore our signature bridal experience and curated looks below.
           </p>
 
@@ -323,7 +323,7 @@ export function Packages() {
                     className="md:col-span-2 w-full relative transition-all duration-200 z-10"
                     onClick={(e) => e.stopPropagation()}
                   >
-                    <div className="relative flex flex-col md:flex-row h-auto md:h-[555px] w-full rounded-xl transition-all duration-300 powder-card border-2 border-primary/70 bg-[#181410] shadow-[0_0_28px_hsl(28_55%_58%/0.22)] ring-1 ring-primary/40 hover:border-primary p-6 md:p-7 select-none gap-6 md:gap-7 justify-between overflow-hidden">
+                    <div className="relative flex flex-col md:flex-row h-auto md:h-[555px] w-full rounded-xl transition-all duration-300 powder-card border-2 border-primary/70 bg-[#181410] shadow-[0_0_28px_hsl(28_55%_58%/0.22)] ring-1 ring-primary/40 hover:border-primary p-5 md:p-7 select-none gap-5 md:gap-7 justify-between overflow-hidden">
                       {/* Left Side: Header, Title, Most Popular Cylinder, Pricing, Description, WhatsApp CTA */}
                       <div className="flex-1 flex flex-col justify-between h-full space-y-3">
                         <div>

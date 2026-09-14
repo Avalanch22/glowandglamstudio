@@ -71,22 +71,22 @@ export default function Layout({
             : 'bg-transparent'
         )}
       >
-        <div className="container mx-auto px-6 h-22 md:h-26 flex items-center justify-between">
+        <div className="container mx-auto px-4 md:px-6 h-16 md:h-22 flex items-center justify-between">
           {/* Logo */}
-          <a href="/index.html" className="flex items-center gap-4 group">
+          <a href="/index.html" className="flex items-center gap-2 md:gap-4 group">
             <div className="relative">
               <img
                 src={logoImg}
                 alt="Glow & Glam Studio"
-                className="h-16 w-16 md:h-20 md:w-20 rounded-full object-cover border-2 border-primary/60 group-hover:border-primary transition-all duration-300 shadow-[0_0_20px_hsl(28_55%_58%/0.35)] group-hover:scale-105"
+                className="h-10 w-10 md:h-16 md:w-16 lg:h-20 lg:w-20 rounded-full object-cover border-2 border-primary/60 group-hover:border-primary transition-all duration-300 shadow-[0_0_20px_hsl(28_55%_58%/0.35)] group-hover:scale-105"
               />
-              <div className="absolute -inset-1.5 rounded-full border border-primary/25 pointer-events-none group-hover:border-primary/50 transition-colors" />
+              <div className="absolute -inset-1 md:-inset-1.5 rounded-full border border-primary/25 pointer-events-none group-hover:border-primary/50 transition-colors" />
             </div>
             <div>
-              <span className="font-display text-2xl md:text-3xl tracking-wide text-foreground font-light block leading-none">
+              <span className="font-display text-lg md:text-2xl lg:text-3xl tracking-wide text-foreground font-light block leading-none">
                 Glow & Glam
               </span>
-              <span className="nav-label text-[10px] text-primary tracking-[0.25em] block mt-1">
+              <span className="nav-label text-[8px] md:text-[10px] text-primary tracking-[0.2em] md:tracking-[0.25em] block mt-0.5">
                 Luxury Studio — Chennai
               </span>
             </div>
@@ -139,7 +139,7 @@ export default function Layout({
 
         {/* Mobile nav */}
         {mobileOpen && (
-          <div className="md:hidden glass border-t border-border/30 px-6 py-8 flex flex-col gap-6 animate-in fade-in slide-in-from-top-3 duration-200">
+          <div className="md:hidden glass border-t border-border/30 px-5 py-6 flex flex-col gap-0 animate-in fade-in slide-in-from-top-3 duration-200">
             {[
               { label: 'Home', href: '/index.html' },
               { label: 'About', href: '/about.html' },
@@ -153,14 +153,14 @@ export default function Layout({
                 href={link.href}
                 onClick={() => setMobileOpen(false)}
                 className={cn(
-                  "nav-label transition-colors text-sm",
+                  "nav-label transition-colors text-sm py-3.5 border-b border-border/20 block",
                   isCurrent(link.href) ? "text-primary font-medium" : "text-muted-foreground hover:text-foreground"
                 )}
               >
                 {link.label}
               </a>
             ))}
-            <Button asChild size="sm" className="self-start mt-2" onClick={() => setMobileOpen(false)}>
+            <Button asChild size="sm" className="self-stretch mt-4 btn-lipstick text-center justify-center" onClick={() => setMobileOpen(false)}>
               <a href="/book-now.html">Book Now</a>
             </Button>
           </div>
@@ -168,7 +168,7 @@ export default function Layout({
       </header>
 
       {/* ── MAIN ── */}
-      <main className="flex-1 pt-16">
+      <main className="flex-1 pt-16 md:pt-20">
         {children}
       </main>
 
@@ -177,72 +177,84 @@ export default function Layout({
         {/* Ambient glow */}
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[180px]
                         bg-[radial-gradient(ellipse,hsl(28_55%_58%/0.06)_0%,transparent_70%)] pointer-events-none" />
-        <div className="container mx-auto px-6 py-10 md:py-12 grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 relative">
-          <div className="col-span-2 md:col-span-1">
-            <div className="flex items-center gap-2 mb-4">
-              <img src={logoImg} alt="Glow & Glam Studio" className="h-8 w-8 rounded-full object-cover border border-primary/30" />
-              <span className="font-display text-base">Glow & Glam</span>
+        {/* Brand + nav grid */}
+        <div className="container mx-auto px-5 md:px-6 py-8 md:py-12 relative">
+          {/* Brand row on mobile */}
+          <div className="flex items-center gap-3 mb-6 md:hidden">
+            <img src={logoImg} alt="Glow & Glam Studio" className="h-9 w-9 rounded-full object-cover border border-primary/30" />
+            <div>
+              <span className="font-display text-base block">Glow & Glam</span>
+              <p className="text-[10px] text-muted-foreground tracking-widest uppercase">Luxury Studio — Chennai</p>
             </div>
-            <p className="text-xs text-muted-foreground leading-relaxed max-w-[200px]">
-              Futuristic beauty. Minimal luxury. Signature glow.
-            </p>
           </div>
-          {[
-            {
-              title: 'Explore', links: [
-                { label: 'Packages', href: '/packages.html' },
-                { label: 'Portfolio', href: '/portfolio.html' },
-                { label: 'Reviews', href: '/reviews.html' },
-              ]
-            },
-            {
-              title: 'Connect', links: [
-                { label: 'About', href: '/about.html' },
-                { label: 'Reviews', href: '/reviews.html' },
-                { label: 'Contact', href: '/contact.html' },
-              ]
-            },
-            {
-              title: 'Studio', links: [
-                { label: 'New York City, NY', href: '#' },
-                { label: 'hello@glowandglam.com', href: 'mailto:hello@glowandglam.com' },
-                { label: '+1 555 123 4567', href: 'tel:+15551234567' },
-              ]
-            },
-          ].map((col) => (
-            <div key={col.title}>
-              <h4 className="nav-label text-foreground mb-5">{col.title}</h4>
-              <ul className="space-y-3">
-                {col.links.map((l) => (
-                  <li key={l.label}>
-                    <a href={l.href} className="text-xs text-muted-foreground hover:text-primary transition-colors link-underline">
-                      {l.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
+          <div className="grid grid-cols-3 md:grid-cols-4 gap-6 md:gap-12">
+            {/* Desktop brand col */}
+            <div className="hidden md:block">
+              <div className="flex items-center gap-2 mb-4">
+                <img src={logoImg} alt="Glow & Glam Studio" className="h-8 w-8 rounded-full object-cover border border-primary/30" />
+                <span className="font-display text-base">Glow & Glam</span>
+              </div>
+              <p className="text-xs text-muted-foreground leading-relaxed max-w-[200px]">
+                Futuristic beauty. Minimal luxury. Signature glow.
+              </p>
             </div>
-          ))}
+            {[
+              {
+                title: 'Explore', links: [
+                  { label: 'Packages', href: '/packages.html' },
+                  { label: 'Portfolio', href: '/portfolio.html' },
+                  { label: 'Reviews', href: '/reviews.html' },
+                ]
+              },
+              {
+                title: 'Connect', links: [
+                  { label: 'About', href: '/about.html' },
+                  { label: 'Reviews', href: '/reviews.html' },
+                  { label: 'Contact', href: '/contact.html' },
+                ]
+              },
+              {
+                title: 'Studio', links: [
+                  { label: 'Chennai, TN', href: '#' },
+                  { label: 'glowandglamstudio@gmail.com', href: 'mailto:glowandglamstudio@gmail.com' },
+                  { label: '+91 88388 19820', href: 'tel:+918838819820' },
+                ]
+              },
+            ].map((col) => (
+              <div key={col.title}>
+                <h4 className="nav-label text-foreground mb-3 md:mb-5 text-[10px] md:text-[0.785rem]">{col.title}</h4>
+                <ul className="space-y-2.5 md:space-y-3">
+                  {col.links.map((l) => (
+                    <li key={l.label}>
+                      <a href={l.href} className="text-[11px] md:text-xs text-muted-foreground hover:text-primary transition-colors link-underline break-all">
+                        {l.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
         </div>
-        <div className="container mx-auto px-6 pb-8 flex items-center justify-between border-t border-border/20 pt-8">
-          <p className="text-xs text-muted-foreground">© 2026 Glow & Glam Studio. All rights reserved.</p>
-          <p className="text-xs text-muted-foreground">Crafted with precision.</p>
+        <div className="container mx-auto px-5 md:px-6 pb-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 border-t border-border/20 pt-5">
+          <p className="text-[11px] text-muted-foreground">© 2026 Glow & Glam Studio. All rights reserved.</p>
+          <p className="text-[11px] text-muted-foreground">Crafted with precision.</p>
         </div>
       </footer>
 
-      {/* ── WhatsApp Float ── */}
+      {/* ── WhatsApp Float (left side) ── */}
       <a
         href="https://wa.me/918838819820?text=Hi%20Glow%20%26%20Glam%20Studio!%20I'd%20like%20to%20inquire%20about%20a%20booking."
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-6 right-6 w-13 h-13 w-12 h-12 bg-[#25D366] rounded-full
-                   flex items-center justify-center z-50
-                   shadow-[0_0_20px_hsl(142_71%_45%/0.4)]
-                   hover:shadow-[0_0_35px_hsl(142_71%_45%/0.7)]
-                   hover:scale-110 transition-all duration-300"
+        className="fixed bottom-5 left-4 md:left-6 w-12 h-12 md:w-14 md:h-14 bg-[#25D366] rounded-full
+                   flex items-center justify-center z-[200]
+                   shadow-[0_4px_20px_hsl(142_71%_45%/0.5)]
+                   hover:shadow-[0_4px_35px_hsl(142_71%_45%/0.75)]
+                   hover:scale-110 active:scale-95 transition-all duration-300"
         aria-label="Chat on WhatsApp"
       >
-        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="white">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white">
           <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.102.824z"/>
         </svg>
       </a>

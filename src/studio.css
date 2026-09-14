@@ -210,3 +210,26 @@ a, button, [role="button"], input[type="submit"], input[type="button"], select {
   transition: all 0.55s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+/* ── Mobile Fixes ── */
+
+/* Prevent horizontal overflow on mobile */
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* Hide scrollbar for horizontal service strip but keep scroll functionality */
+.overflow-x-auto {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.overflow-x-auto::-webkit-scrollbar {
+  display: none;
+}
+
+/* Ensure WhatsApp button is comfortably sized on small screens */
+@media (max-width: 360px) {
+  .fixed.bottom-5 {
+    bottom: 14px;
+  }
+}
