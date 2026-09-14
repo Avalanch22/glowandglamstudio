@@ -1,0 +1,73 @@
+{
+  "services": [
+    {
+      "id": "bridal-makeup",
+      "title": "Bridal",
+      "tagline": "Your most important morning, perfected.",
+      "description": "Exquisite, transfer-proof bridal looks engineered to last from your morning rituals through the final dance. We sculpt light itself onto your face using HD airbrush and luxury products.",
+      "whatsapp": "Hi Glow %26 Glam! I'd like to inquire about Bridal Makeup for my wedding date.",
+      "category": "bridal",
+      "faqs": [
+        { "q": "How far in advance should I book?", "a": "We recommend booking 3–6 months in advance for bridal, especially during peak wedding season (Oct–Feb). Popular dates fill very quickly." },
+        { "q": "Do you offer a trial session?", "a": "Yes — a bridal trial is strongly encouraged 4–6 weeks before your wedding. It's included in our premium packages and available à la carte." },
+        { "q": "Do you travel to the venue?", "a": "Yes. We offer on-location services. Travel fees may apply outside Chennai city limits." },
+        { "q": "What products do you use?", "a": "We use luxury brands — MAC, Charlotte Tilbury, Armani Beauty, and Temptu airbrush system — chosen for longevity and skin compatibility." }
+      ]
+    },
+    {
+      "id": "reception-makeup",
+      "title": "Reception",
+      "tagline": "Where the evening begins.",
+      "description": "A bolder, more luminous evolution of your bridal look. Designed for flash photography, dance floors, and the long night ahead.",
+      "whatsapp": "Hi Glow %26 Glam! I'd like to inquire about Reception Makeup.",
+      "category": "reception",
+      "faqs": []
+    },
+    {
+      "id": "party-makeup",
+      "title": "Party",
+      "tagline": "Make every entrance count.",
+      "description": "Sophisticated glam for galas, birthdays, cocktail evenings, and anything in between. Stand out with our signature luminous base.",
+      "whatsapp": "Hi Glow %26 Glam! I'd like to inquire about Party Makeup.",
+      "category": "party",
+      "faqs": []
+    },
+    {
+      "id": "engagement-makeup",
+      "title": "Engagement",
+      "tagline": "Soft. Romantic. Unforgettable.",
+      "description": "A dewy, ethereal look that photographs beautifully and feels effortless. Perfect for ring ceremony moments and intimate celebrations.",
+      "whatsapp": "Hi Glow %26 Glam! I'd like to inquire about Engagement Makeup.",
+      "category": "engagement",
+      "faqs": []
+    },
+    {
+      "id": "hairstyling",
+      "title": "Hairstyling",
+      "tagline": "Structure that moves. Architecture that flows.",
+      "description": "Expert hair styling from sculptural updos to textured waves, paired with flawless saree and dupatta draping.",
+      "whatsapp": "Hi Glow %26 Glam! I'd like to inquire about Hairstyling %26 Draping.",
+      "category": "hairstyling",
+      "faqs": [
+        { "q": "Do you offer both hair and makeup?", "a": "Yes. We specialize in full-glam transformations combining hair styling, makeup, and draping for a cohesive editorial look." },
+        { "q": "Can you drape sarees and dupattas?", "a": "Absolutely. Professional draping is one of our signature offerings, with styles from classic Nivi to modern contemporary drapes." }
+      ]
+    }
+  ],
+  "reviews": [
+    { "name": "Priya S.", "text": "I've never felt so beautiful. The team understood my vision perfectly — a luminous, natural-looking bridal look that lasted through tears, heat, and dancing.", "event": "Bridal Makeup", "date": "Dec 2025", "rating": 5 },
+    { "name": "Anjali R.", "text": "The precision is incredible. Every detail — the lashes, the highlight, the draping — was executed flawlessly. I keep looking at my wedding photos just to see her work.", "event": "Reception & Bridal", "date": "Nov 2025", "rating": 5 },
+    { "name": "Sarah M.", "text": "I was nervous about heavy makeup for my engagement shoot. She convinced me to trust the process — and the result was the most 'me' I've ever looked in photographs.", "event": "Engagement Makeup", "date": "Oct 2025", "rating": 5 },
+    { "name": "Meera K.", "text": "Professional, punctual, hygienic, and incredibly skilled. My party look was fresh at midnight. I can't recommend highly enough.", "event": "Party Makeup", "date": "Sep 2025", "rating": 5 },
+    { "name": "Riya B.", "text": "The bridal trial alone was worth it. She walked me through every product, showed me the techniques, and made sure I felt confident. A true professional.", "event": "Bridal Trial + Wedding Day", "date": "Aug 2025", "rating": 5 },
+    { "name": "Divya N.", "text": "I had a last-minute request and the team accommodated me brilliantly. The result was magazine-worthy. Absolutely will book again for every event.", "event": "Party Makeup", "date": "Jul 2025", "rating": 5 }
+  ],
+  "contact": {
+    "whatsapp": "+918838819820",
+    "whatsappUrl": "https://wa.me/918838819820",
+    "email": "hello@glowandglamstudio.in",
+    "instagram": "@glowandglamstudio",
+    "location": "Chennai, Tamil Nadu",
+    "availableFor": "Destination events across India"
+  }
+}

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
+  <!-- Makeup brush -->
+  <path d="M10 38 L30 8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+  <path d="M8 40 C8 36 12 36 12 40 C12 44 8 44 8 40Z" fill="currentColor" opacity="0.6"/>
+  <path d="M28 10 C30 6 34 6 34 10 C34 14 28 14 28 10Z" fill="currentColor" opacity="0.8"/>
+  <!-- Sparkle -->
+  <path d="M38 14 L39 11 L40 14 L43 15 L40 16 L39 19 L38 16 L35 15Z" fill="currentColor" opacity="0.7"/>
+  <path d="M6 20 L7 18 L8 20 L10 21 L8 22 L7 24 L6 22 L4 21Z" fill="currentColor" opacity="0.4"/>
+</svg>

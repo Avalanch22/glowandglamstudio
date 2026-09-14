@@ -1,0 +1,212 @@
+/* ── Artisanal Makeup Brush Cursor with (2,2) pinpoint tip ── */
+body {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32' fill='none'%3E%3Cdefs%3E%3ClinearGradient id='br' x1='0' y1='0' x2='12' y2='12' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='0%25' stop-color='%23FFF3D6'/%3E%3Cstop offset='30%25' stop-color='%23C98B5C'/%3E%3Cstop offset='70%25' stop-color='%2369381E'/%3E%3Cstop offset='100%25' stop-color='%2326160F'/%3E%3C/linearGradient%3E%3ClinearGradient id='fe' x1='8' y1='8' x2='16' y2='16' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='0%25' stop-color='%23FBE099'/%3E%3Cstop offset='50%25' stop-color='%23D4AF37'/%3E%3Cstop offset='100%25' stop-color='%23946C1A'/%3E%3C/linearGradient%3E%3ClinearGradient id='ha' x1='14' y1='14' x2='30' y2='30' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='0%25' stop-color='%232E2724'/%3E%3Cstop offset='50%25' stop-color='%23181412'/%3E%3Cstop offset='100%25' stop-color='%23080706'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M14 17 L27 30 A2.5 2.5 0 0 0 30 27 L17 14 Z' fill='url(%23ha)' stroke='%23382E28' stroke-width='0.5'/%3E%3Cline x1='19' y1='22' x2='22' y2='19' stroke='%23D4AF37' stroke-width='1.2'/%3E%3Cpolygon points='9,14 14,19 18,15 13,10' fill='url(%23fe)' stroke='%23ECC56A' stroke-width='0.5'/%3E%3Cpath d='M2 2 C3.5 6, 6 10, 9 14 L13 10 C10 7, 6 3.5, 2 2 Z' fill='url(%23br)'/%3E%3Cpath d='M2.5 2.5 Q6 7 11 12' stroke='%23FFF8E7' stroke-width='0.6' opacity='0.7'/%3E%3Ccircle cx='2.5' cy='2.5' r='1.5' fill='%23FFEBB8'/%3E%3Ccircle cx='4.5' cy='2' r='0.6' fill='%23E5C07B'/%3E%3Ccircle cx='2' cy='4.5' r='0.6' fill='%23C98B5C'/%3E%3C/svg%3E") 2 2, default;
+}
+
+a, button, [role="button"], input[type="submit"], input[type="button"], select {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32' fill='none'%3E%3Cdefs%3E%3ClinearGradient id='brh' x1='0' y1='0' x2='12' y2='12' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='0%25' stop-color='%23FFFFFF'/%3E%3Cstop offset='35%25' stop-color='%23FFB27D'/%3E%3Cstop offset='75%25' stop-color='%239E5028'/%3E%3Cstop offset='100%25' stop-color='%2326160F'/%3E%3C/linearGradient%3E%3ClinearGradient id='feh' x1='8' y1='8' x2='16' y2='16' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='0%25' stop-color='%23FFF2B8'/%3E%3Cstop offset='50%25' stop-color='%23FFCC33'/%3E%3Cstop offset='100%25' stop-color='%23B8860B'/%3E%3C/linearGradient%3E%3ClinearGradient id='hah' x1='14' y1='14' x2='30' y2='30' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='0%25' stop-color='%23382E28'/%3E%3Cstop offset='50%25' stop-color='%231F1916'/%3E%3Cstop offset='100%25' stop-color='%23080706'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M14 17 L27 30 A2.5 2.5 0 0 0 30 27 L17 14 Z' fill='url(%23hah)' stroke='%234A3C34' stroke-width='0.5'/%3E%3Cline x1='19' y1='22' x2='22' y2='19' stroke='%23FFD700' stroke-width='1.5'/%3E%3Cpolygon points='9,14 14,19 18,15 13,10' fill='url(%23feh)' stroke='%23FFDF73' stroke-width='0.6'/%3E%3Cpath d='M2 2 C3.5 6, 6 10, 9 14 L13 10 C10 7, 6 3.5, 2 2 Z' fill='url(%23brh)'/%3E%3Cpath d='M2.5 2.5 Q6 7 11 12' stroke='%23FFFFFF' stroke-width='0.8' opacity='0.9'/%3E%3Ccircle cx='2.5' cy='2.5' r='2.5' fill='%23FFE599' opacity='0.95'/%3E%3Ccircle cx='5.5' cy='2' r='1' fill='%23FF9966'/%3E%3Ccircle cx='2' cy='5.5' r='1' fill='%23FFCC33'/%3E%3Ccircle cx='6' cy='6' r='0.7' fill='%23FFFFFF'/%3E%3C/svg%3E") 2 2, pointer;
+}
+
+/* ── High-impact Studio Spotlight follow-cursor ── */
+.spotlight {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 680px;
+  height: 680px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 25;
+  will-change: transform;
+  mix-blend-mode: screen;
+}
+
+.spotlight-core {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 240px;
+  height: 240px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(circle, hsl(38 85% 75% / 0.28) 0%, hsl(28 65% 58% / 0.14) 50%, transparent 70%);
+  filter: blur(16px);
+}
+
+.spotlight-halo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 680px;
+  height: 680px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(circle, hsl(28 60% 55% / 0.16) 0%, hsl(38 50% 50% / 0.07) 45%, transparent 70%);
+}
+
+/* ── Vanity mirror bulbs ring ── */
+.vanity-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  pointer-events: none;
+}
+.vanity-ring::before {
+  content: '';
+  position: absolute;
+  inset: 4%;
+  border-radius: 50%;
+  border: 1px dashed hsl(38 40% 65% / 0.15);
+  pointer-events: none;
+}
+.vanity-bulb {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: hsl(38 60% 90%);
+  box-shadow: 0 0 8px 3px hsl(38 70% 75% / 0.8), 0 0 20px 8px hsl(28 65% 58% / 0.45);
+  animation: bulbPulse 2.5s ease-in-out infinite;
+}
+.vanity-bulb:nth-child(odd)  { animation-delay: 0.35s; }
+.vanity-bulb:nth-child(3n)   { animation-delay: 0.8s; }
+.vanity-bulb:nth-child(4n)   { animation-delay: 1.25s; }
+.vanity-bulb:nth-child(5n)   { animation-delay: 1.7s; }
+
+@keyframes bulbPulse {
+  0%, 100% { opacity: 0.55; transform: translate(-50%,-50%) scale(0.9); box-shadow: 0 0 7px 2px hsl(38 50% 70% / 0.6); }
+  50%       { opacity: 1;    transform: translate(-50%,-50%) scale(1.15); box-shadow: 0 0 12px 5px hsl(38 80% 80% / 0.95), 0 0 26px 10px hsl(28 65% 58% / 0.5); }
+}
+
+/* ── Brush-stroke heading reveal ── */
+.brush-reveal {
+  position: relative;
+  display: inline-block;
+}
+.brush-reveal::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: linear-gradient(90deg, hsl(28 55% 58%), hsl(38 40% 75%), transparent);
+  border-radius: 2px;
+  transition: width 1s cubic-bezier(0.22, 1, 0.36, 1);
+  filter: blur(0.5px);
+}
+.brush-reveal.visible::after, .brush-reveal:hover::after {
+  width: 100%;
+}
+
+/* ── Floating shimmer dust particles canvas ── */
+#dust-canvas {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.4;
+}
+
+/* ── Makeup bullet points ── */
+.bullet-lip::before {
+  content: '✦';
+  color: hsl(28 55% 58%);
+  margin-right: 0.5rem;
+  font-size: 0.65rem;
+  vertical-align: middle;
+}
+
+/* ── Studio glass panels ── */
+.studio-panel {
+  background: linear-gradient(135deg,
+    hsl(20 8% 10% / 0.8) 0%,
+    hsl(28 15% 12% / 0.6) 50%,
+    hsl(20 8% 10% / 0.8) 100%
+  );
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid hsl(38 20% 22% / 0.5);
+  box-shadow:
+    inset 0 1px 0 hsl(38 40% 65% / 0.1),
+    0 20px 60px hsl(20 8% 0% / 0.5);
+}
+
+/* ── Gold shimmer text animation ── */
+@keyframes goldShimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+.text-shimmer {
+  background: linear-gradient(
+    90deg,
+    hsl(38 40% 65%) 0%,
+    hsl(28 55% 75%) 25%,
+    hsl(38 60% 85%) 50%,
+    hsl(28 55% 62%) 75%,
+    hsl(38 40% 65%) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: goldShimmer 4s linear infinite;
+}
+
+/* ── Brush stroke service links ── */
+.service-link {
+  position: relative;
+  overflow: hidden;
+}
+.service-link::before {
+  content: '';
+  position: absolute;
+  left: -100%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, hsl(28 55% 58%), transparent);
+  transition: left 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.service-link:hover::before {
+  left: 100%;
+}
+
+/* ── Lipstick swipe CTA hover ── */
+.btn-lipstick {
+  position: relative;
+  overflow: hidden;
+}
+.btn-lipstick::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, hsl(28 55% 68% / 0.3), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.5s ease;
+}
+.btn-lipstick:hover::before {
+  left: 150%;
+}
+
+/* ── Powder-card hover effect ── */
+.powder-card {
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.powder-card:hover {
+  transform: translateY(-3px);
+  border-color: hsl(28 55% 58% / 0.5);
+  box-shadow:
+    0 8px 30px hsl(28 55% 58% / 0.08),
+    0 0 15px hsl(38 40% 65% / 0.05);
+}
+
+/* ── Card fan carousel transition ── */
+.fan-card-transition {
+  transition: all 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+

@@ -1,0 +1,15 @@
+<!-- Compact Blush Powder -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Outer Compact Base -->
+  <ellipse cx="12" cy="15" rx="8.5" ry="6"/>
+  <!-- Powder Pan inside -->
+  <ellipse cx="12" cy="15" rx="6" ry="4"/>
+  <!-- Rosette swirl detail in powder -->
+  <path d="M10.5 14.5c.5-1 2-1 2.5 0s1.5 1 2.5.5"/>
+  <!-- Mirror Lid open upwards -->
+  <path d="M4 13C4.5 7.5 8 3.5 12 3.5s7.5 4 8 9.5"/>
+  <!-- Mirror reflection arc -->
+  <path d="M8 8c1.5-2 3.5-2.5 5-2.5"/>
+  <!-- Hinge -->
+  <rect x="10.5" y="12" width="3" height="1.5" rx="0.5"/>
+</svg>
