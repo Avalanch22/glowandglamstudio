@@ -12,17 +12,40 @@ export function Spotlight() {
     let targetY = -1000;
     let currentX = -1000;
     let currentY = -1000;
+    let targetOpacity = 1;
+    let currentOpacity = 1;
+    let targetScale = 1;
+    let currentScale = 1;
     let rafId: number;
 
     const onMove = (e: MouseEvent) => {
       targetX = e.clientX;
       targetY = e.clientY;
+
+      const target = e.target as HTMLElement;
+      // Define what is NOT empty space
+      const isText = ['P', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'SPAN', 'LI', 'LABEL'].includes(target.tagName);
+      const isMediaOrInteractive = ['IMG', 'SVG', 'A', 'BUTTON', 'INPUT', 'TEXTAREA', 'SELECT', 'path', 'circle'].includes(target.tagName) || target.closest('a, button');
+      const isCardOrContainer = target.closest('.glass, .powder-card, .card, [class*="bg-[#"], [class*="bg-surface"], [class*="bg-card"], [class*="bg-muted"], footer');
+
+      if (isText || isMediaOrInteractive || isCardOrContainer) {
+        targetOpacity = 0.15;
+        targetScale = 0.7;
+      } else {
+        targetOpacity = 1;
+        targetScale = 1;
+      }
     };
 
     const render = () => {
       currentX += (targetX - currentX) * 0.12;
       currentY += (targetY - currentY) * 0.12;
-      el.style.transform = `translate3d(${currentX}px, ${currentY}px, 0) translate(-50%, -50%)`;
+      currentOpacity += (targetOpacity - currentOpacity) * 0.08;
+      currentScale += (targetScale - currentScale) * 0.08;
+      
+      el.style.transform = `translate3d(${currentX}px, ${currentY}px, 0) translate(-50%, -50%) scale(${currentScale})`;
+      el.style.opacity = currentOpacity.toString();
+      
       rafId = requestAnimationFrame(render);
     };
     rafId = requestAnimationFrame(render);
