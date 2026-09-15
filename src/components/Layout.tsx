@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React from 'react';
+import { motion } from 'framer-motion';
 import logoImg from '@/assets/images/logo.jpg';
-import { Button } from './ui/button';
 import { cn } from '@/lib/utils';
 import { Spotlight, DustParticles } from './StudioEffects';
 import '../studio.css';
@@ -40,151 +39,56 @@ export default function Layout({
   children: React.ReactNode;
   currentPath?: string;
 }) {
-  const [mobileOpen, setMobileOpen] = useState(false);
-
-  // Lock body scroll when mobile menu is open
-  useEffect(() => {
-    if (mobileOpen) {
-      document.body.style.overflow = 'hidden';
-      document.documentElement.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-      document.documentElement.style.overflow = '';
-    }
-    return () => {
-      document.body.style.overflow = '';
-      document.documentElement.style.overflow = '';
-    };
-  }, [mobileOpen]);
-
-  const isCurrent = (href: string) => {
+  const isHome = (() => {
     const current = (currentPath || '').toLowerCase();
-    if (href === '/index.html' || href === '/') {
-      return current === '/' || current.endsWith('/index.html') || current === '';
-    }
-    const name = href.replace('.html', '').replace('/', '');
-    return current.includes(name);
-  };
+    return current === '/' || current.endsWith('/index.html') || current === '';
+  })();
 
   return (
     <div className="flex flex-col min-h-screen bg-background">
       <Spotlight />
       <DustParticles />
-      {/* ── HEADER ── */}
-      <header className="fixed top-0 left-0 right-0 z-[100] glass border-b border-border/30 shadow-[0_4px_24px_hsl(20_8%_0%/0.3)]">
-        <div className="container mx-auto px-4 md:px-6 h-16 md:h-22 flex items-center justify-between relative bg-transparent z-20">
-          {/* Logo */}
-          <a href="/index.html" className="flex items-center gap-2 md:gap-4 group">
-            <div className="relative">
-              <img
-                src={logoImg}
-                alt="Glow & Glam Studio"
-                className="h-10 w-10 md:h-16 md:w-16 lg:h-20 lg:w-20 rounded-full object-cover border-2 border-primary/60 group-hover:border-primary transition-all duration-300 shadow-[0_0_20px_hsl(28_55%_58%/0.35)] group-hover:scale-105"
-              />
-              <div className="absolute -inset-1 md:-inset-1.5 rounded-full border border-primary/25 pointer-events-none group-hover:border-primary/50 transition-colors" />
-            </div>
-            <div>
-              <span className="font-display text-lg md:text-2xl lg:text-3xl tracking-wide text-foreground font-light block leading-none">
-                Glow & Glam
-              </span>
-              <span className="nav-label text-[8px] md:text-[10px] text-primary tracking-[0.2em] md:tracking-[0.25em] block mt-0.5">
-                Luxury Studio — Chennai
-              </span>
-            </div>
-          </a>
 
-          {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-8">
-            {[
-              { label: 'Home', href: '/index.html' },
-              { label: 'About', href: '/about.html' },
-              { label: 'Portfolio', href: '/portfolio.html' },
-              { label: 'Packages', href: '/packages.html' },
-              { label: 'Reviews', href: '/reviews.html' },
-            ].map((link) => {
-              const active = isCurrent(link.href);
-              return (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  className={cn(
-                    "nav-label link-underline transition-all duration-200",
-                    active
-                      ? "text-primary font-medium border-b border-primary/60 pb-0.5"
-                      : "text-muted-foreground hover:text-foreground"
-                  )}
-                >
-                  {link.label}
-                </a>
-              );
-            })}
-          </nav>
-
-          <div className="hidden md:flex items-center gap-4">
-            <Button asChild size="lg" className="btn-lipstick px-6 py-5 text-sm">
-              <a href="/book-now.html">Book Now</a>
-            </Button>
+      {/* ── TOP CENTERED BRAND HEADER (NO HEADER BAR) ── */}
+      <header className="relative w-full pt-8 md:pt-12 pb-4 px-4 flex flex-col items-center justify-center text-center z-30">
+        <a href="/index.html" className="inline-flex flex-col items-center group cursor-pointer">
+          <div className="relative mb-3">
+            <img
+              src={logoImg}
+              alt="Glow & Glam Studio"
+              className="h-20 w-20 md:h-24 md:w-24 lg:h-28 lg:w-28 rounded-full object-cover border-2 border-primary/60 group-hover:border-primary transition-all duration-500 shadow-[0_0_25px_hsl(28_55%_58%/0.4)] group-hover:scale-105 group-hover:shadow-[0_0_35px_hsl(28_55%_58%/0.6)]"
+            />
+            <div className="absolute -inset-1.5 md:-inset-2 rounded-full border border-primary/25 pointer-events-none group-hover:border-primary/60 transition-colors" />
           </div>
+          <span className="font-display text-2xl md:text-3xl lg:text-4xl tracking-wide text-foreground font-light block leading-tight">
+            Glow & Glam
+          </span>
+          <span className="nav-label text-[9px] md:text-[11px] text-primary tracking-[0.25em] md:tracking-[0.3em] uppercase block mt-1">
+            Luxury Studio — Chennai
+          </span>
+        </a>
 
-          {/* Mobile toggle */}
-          <button
-            onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden flex flex-col gap-1.5 p-2"
-            aria-label="Toggle menu"
-          >
-            <span className={cn('block w-5 h-px bg-foreground transition-all', mobileOpen && 'rotate-45 translate-y-2')}></span>
-            <span className={cn('block w-5 h-px bg-foreground transition-all', mobileOpen && 'opacity-0')}></span>
-            <span className={cn('block w-5 h-px bg-foreground transition-all', mobileOpen && '-rotate-45 -translate-y-2')}></span>
-          </button>
-        </div>
-
-        {/* Mobile nav */}
-        <AnimatePresence>
-          {mobileOpen && (
-            <motion.div
-              initial={{ opacity: 0, y: -20, height: 0 }}
-              animate={{ opacity: 1, y: 0, height: 'auto' }}
-              exit={{ opacity: 0, y: -10, height: 0 }}
-              transition={{ duration: 0.3, ease: "easeInOut" }}
-              className="md:hidden bg-background/95 backdrop-blur-xl shadow-[0_10px_40px_rgba(0,0,0,0.5)] border-t border-border/30 px-5 flex flex-col overflow-hidden absolute w-full left-0 right-0 z-10 overscroll-contain touch-none"
+        {/* Minimalist "Back to Home" pill for inner pages */}
+        {!isHome && (
+          <div className="mt-5">
+            <a
+              href="/index.html"
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-card/60 hover:bg-card border border-border/50 hover:border-primary/50 text-xs text-muted-foreground hover:text-foreground transition-all duration-300 shadow-sm group"
             >
-              <div className="py-6 flex flex-col gap-0">
-                {[
-                  { label: 'Home', href: '/index.html' },
-                  { label: 'About', href: '/about.html' },
-                  { label: 'Portfolio', href: '/portfolio.html' },
-                  { label: 'Packages', href: '/packages.html' },
-                  { label: 'Reviews', href: '/reviews.html' },
-                  { label: 'Contact', href: '/contact.html' },
-                ].map((link) => (
-                  <a
-                    key={link.href}
-                    href={link.href}
-                    onClick={() => setMobileOpen(false)}
-                    className={cn(
-                      "nav-label transition-colors text-sm py-3.5 border-b border-border/20 block",
-                      isCurrent(link.href) ? "text-primary font-medium" : "text-muted-foreground hover:text-foreground"
-                    )}
-                  >
-                    {link.label}
-                  </a>
-                ))}
-                <Button asChild size="sm" className="self-stretch mt-4 btn-lipstick text-center justify-center" onClick={() => setMobileOpen(false)}>
-                  <a href="/book-now.html">Book Now</a>
-                </Button>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+              <span className="text-primary font-semibold transition-transform group-hover:-translate-x-0.5">←</span>
+              <span>Back to Home</span>
+            </a>
+          </div>
+        )}
       </header>
 
       {/* ── MAIN ── */}
-      <main className="flex-1 pt-16 md:pt-20">
+      <main className="flex-1">
         {children}
       </main>
 
       {/* ── FOOTER ── */}
-      <footer className="relative mt-6 md:mt-8 border-t border-border/30 overflow-hidden">
+      <footer className="relative mt-12 md:mt-16 border-t border-border/30 overflow-hidden">
         {/* Ambient glow */}
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[180px]
                         bg-[radial-gradient(ellipse,hsl(28_55%_58%/0.06)_0%,transparent_70%)] pointer-events-none" />
@@ -212,16 +116,16 @@ export default function Layout({
             {[
               {
                 title: 'Explore', links: [
+                  { label: 'Gallery', href: '/portfolio.html' },
                   { label: 'Packages', href: '/packages.html' },
-                  { label: 'Portfolio', href: '/portfolio.html' },
-                  { label: 'Reviews', href: '/reviews.html' },
+                  { label: 'Book Now', href: '/book-now.html' },
                 ]
               },
               {
                 title: 'Connect', links: [
-                  { label: 'About', href: '/about.html' },
-                  { label: 'Reviews', href: '/reviews.html' },
+                  { label: 'About Studio', href: '/about.html' },
                   { label: 'Contact', href: '/contact.html' },
+                  { label: 'Reservations', href: '/book-now.html' },
                 ]
               },
               {
@@ -253,21 +157,28 @@ export default function Layout({
         </div>
       </footer>
 
-      {/* ── WhatsApp Float (left side) ── */}
+      {/* ── WhatsApp Float (left side) with Official Pixel-Perfect Vector ── */}
       <a
         href="https://wa.me/918838819820?text=Hi%20Glow%20%26%20Glam%20Studio!%20I'd%20like%20to%20inquire%20about%20a%20booking."
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-5 left-4 md:left-6 w-12 h-12 md:w-14 md:h-14 bg-[#25D366] rounded-full
-                   flex items-center justify-center z-[200]
-                   shadow-[0_4px_20px_hsl(142_71%_45%/0.5)]
-                   hover:shadow-[0_4px_35px_hsl(142_71%_45%/0.75)]
-                   hover:scale-110 active:scale-95 transition-all duration-300"
-        aria-label="Chat on WhatsApp"
+        className="group fixed bottom-5 left-4 md:left-6 z-[200] flex items-center gap-2.5"
+        aria-label="Chat with us on WhatsApp"
       >
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white">
-          <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.102.824z"/>
-        </svg>
+        <div className="relative w-12 h-12 md:w-14 md:h-14 rounded-full bg-[#25D366] shadow-[0_6px_24px_rgba(37,211,102,0.45)] hover:shadow-[0_8px_35px_rgba(37,211,102,0.7)] hover:scale-110 active:scale-95 transition-all duration-300 flex items-center justify-center">
+          <span className="absolute inset-0 rounded-full bg-[#25D366]/30 animate-ping pointer-events-none" />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            className="w-6 h-6 md:w-7 md:h-7 fill-white relative z-10"
+            aria-hidden="true"
+          >
+            <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm.01 18.16c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.32a8.13 8.13 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.26.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.23 8.24zm4.52-6.17c-.25-.12-1.47-.72-1.7-.81-.23-.09-.39-.14-.56.11-.16.25-.64.81-.78.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.48-1.39-1.73-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.43.12-.14.17-.24.25-.4.08-.16.04-.31-.02-.43-.06-.12-.56-1.35-.76-1.85-.2-.48-.4-.42-.56-.43h-.47c-.16 0-.43.06-.66.31-.22.25-.86.84-.86 2.05s.88 2.37 1 2.53c.13.16 1.72 2.63 4.17 3.68.58.25 1.04.4 1.39.51.58.18 1.12.16 1.54.1.46-.07 1.43-.58 1.63-1.15.21-.57.21-1.06.15-1.15-.06-.1-.22-.16-.47-.28z"/>
+          </svg>
+        </div>
+        <span className="hidden md:inline-block opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-background/90 text-foreground border border-border/60 text-xs px-3 py-1.5 rounded-full shadow-lg pointer-events-none backdrop-blur-sm whitespace-nowrap">
+          Chat on WhatsApp
+        </span>
       </a>
     </div>
   );

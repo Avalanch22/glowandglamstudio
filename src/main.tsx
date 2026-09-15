@@ -17,7 +17,6 @@ import {
 } from './pages/Services';
 import { Portfolio } from './pages/Portfolio';
 import { Packages } from './pages/Packages';
-import { Reviews } from './pages/Reviews';
 import { BookNow, Contact } from './pages/Forms';
 
 function App() {
@@ -108,7 +107,6 @@ function App() {
     if (path.includes('about')) return { key: 'about', Component: About };
     if (path.includes('portfolio')) return { key: 'portfolio', Component: Portfolio };
     if (path.includes('packages')) return { key: 'packages', Component: Packages };
-    if (path.includes('reviews')) return { key: 'reviews', Component: Reviews };
     if (path.includes('book-now')) return { key: 'book-now', Component: BookNow };
     if (path.includes('contact')) return { key: 'contact', Component: Contact };
     if (path.includes('services/bridal-makeup')) return { key: 'svc-bridal', Component: ServiceBridal };
