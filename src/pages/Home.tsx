@@ -66,10 +66,10 @@ export function Home() {
     <div className="relative">
       {/* ── HERO ── */}
       <section 
-        className="relative min-h-[75svh] md:min-h-[85svh] lg:min-h-[100svh] flex flex-col items-center justify-center text-center px-4 md:px-6 pt-2 pb-12 lg:mb-[450px]"
+        className="relative min-h-[450px] md:min-h-[85svh] lg:min-h-[100svh] flex flex-col items-center justify-center text-center px-4 md:px-6 pt-2 pb-12 mb-32 md:mb-0 lg:mb-[450px]"
         style={{ overflowX: 'clip', overflowY: 'visible' }}
       >
-        <div className="absolute top-[40%] md:top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[340px] h-[340px] sm:w-[600px] sm:h-[600px] md:w-[850px] md:h-[850px] lg:w-[1350px] lg:h-[1150px] pointer-events-none">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[340px] h-[340px] sm:w-[600px] sm:h-[600px] md:w-[850px] md:h-[850px] lg:w-[1350px] lg:h-[1150px] pointer-events-none">
           <VanityRing count={28} />
           <div className="absolute inset-[8%] rounded-full bg-[radial-gradient(ellipse,hsl(28_55%_58%/0.14)_0%,hsl(38_40%_65%/0.05)_45%,transparent_70%)]" />
           
@@ -143,12 +143,12 @@ export function Home() {
           </div>
         </div>
 
-        <div className="flex items-center gap-2 md:gap-3 mb-4 md:mb-6 fade-in relative z-10">
-          <BrushIcon className="w-4 h-4 md:w-5 md:h-5 text-primary -rotate-45" />
-          <span className="nav-label text-primary tracking-[0.2em] md:tracking-[0.25em] text-[10px] md:text-xs uppercase">
+        <div className="flex items-center justify-center gap-2 md:gap-3 mt-4 md:mt-0 mb-4 md:mb-6 fade-in relative z-10 max-w-[260px] md:max-w-none mx-auto text-center">
+          <BrushIcon className="hidden md:block w-4 h-4 md:w-5 md:h-5 text-primary -rotate-45" />
+          <span className="nav-label text-primary tracking-[0.15em] md:tracking-[0.25em] text-[9px] md:text-xs uppercase leading-relaxed">
             Signature Bridal & Editorial Artistry
           </span>
-          <BrushIcon className="w-4 h-4 md:w-5 md:h-5 text-primary rotate-45" />
+          <BrushIcon className="hidden md:block w-4 h-4 md:w-5 md:h-5 text-primary rotate-45" />
         </div>
 
         <h1 className="relative z-10 font-display font-light text-[2.6rem] sm:text-6xl md:text-8xl lg:text-9xl leading-[0.92] tracking-tight fade-in max-w-5xl mb-5 md:mb-7">
@@ -156,10 +156,12 @@ export function Home() {
           <span className="text-shimmer italic">Quiet Glow.</span>
         </h1>
 
-        <p className="relative z-10 text-sm md:text-lg lg:text-xl text-muted-foreground max-w-xs sm:max-w-md md:max-w-2xl mx-auto mb-6 md:mb-10 fade-in leading-relaxed font-light">
-          Futuristic precision meets timeless grace. Bespoke makeup, hair architecture, and couture styling 
-          for brides who prefer subtle luxury over heavy masking.
-        </p>
+        <div className="absolute top-[calc(50%+190px)] left-0 w-full px-4 md:relative md:top-auto md:w-auto md:px-0 z-10 md:mb-10">
+          <p className="text-sm md:text-lg lg:text-xl text-muted-foreground max-w-[300px] sm:max-w-md md:max-w-2xl mx-auto fade-in leading-relaxed font-light">
+            Futuristic precision meets timeless grace. Bespoke makeup, hair architecture, and couture styling 
+            for brides who prefer subtle luxury over heavy masking.
+          </p>
+        </div>
       </section>
 
       {/* ── MOBILE: 4 NAVIGATION CARDS GRID ── */}
