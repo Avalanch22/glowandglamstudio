@@ -23,46 +23,46 @@ import { cn } from "@/lib/utils";
 
 const ARTISTRY_SERVICES = [
   {
-    id: "Signature Bridal Makeup",
-    label: "Signature Bridal Makeup",
-    price: "₹15,000",
+    id: "Bridal Makeover",
+    label: "Bridal Makeover",
+    price: "₹10,000",
     tag: "Most Popular",
-    desc: "Cry-proof airbrush/HD base, bespoke eye artistry, luxury mink lashes, couture hair & designer saree drape.",
+    desc: "HD makeup full look, specialized draping (Saree/Lehenga), customized hair styling, and lash application.",
   },
   {
-    id: "Bridal HD Makeup",
-    label: "Bridal HD Makeup",
-    price: "₹12,000",
-    tag: "Classic Elegance",
-    desc: "High-definition camera-ready bridal radiance with luxury mink lashes, timeless hair sculpting & precision draping.",
+    id: "Reception Makeover",
+    label: "Reception Makeover",
+    price: "₹8,000",
+    tag: "Glamour",
+    desc: "HD makeup full look, eye-forward styling, lash application, hair styling, and saree / dupatta draping.",
   },
   {
-    id: "Reception / Evening Glam",
-    label: "Reception / Evening Glam",
-    price: "₹9,000",
-    tag: "Evening Couture",
-    desc: "Sculpted couture glam with luminous skin, statement eye design & glamorous evening red-carpet hair styling.",
+    id: "Model Photoshoot Makeover",
+    label: "Model Photoshoot Makeover",
+    price: "₹6,000",
+    tag: "Editorial",
+    desc: "Camera-ready HD base, creative or editorial styling, multiple look transitions, and on-set assistance.",
   },
   {
-    id: "Party Glam Makeup",
-    label: "Party Glam Makeup",
-    price: "₹5,000",
+    id: "Haldi & Mehendi Looks",
+    label: "Haldi & Mehendi Looks",
+    price: "₹4,000",
+    tag: "Event",
+    desc: "Dewy sweat-proof base, soft contouring, floral jewelry styling assistance, and basic hair styling.",
+  },
+  {
+    id: "Evening Party Looks",
+    label: "Evening Party Looks",
+    price: "₹3,000",
     tag: "Celebration",
-    desc: "Fresh radiant glam for bridesmaids & family entourage with camera-friendly HD finish & soft styling.",
+    desc: "Flawless HD makeup base, party-ready subtle glam, and basic hair setting/blow-dry.",
   },
   {
-    id: "Bridal Trial Session",
-    label: "Bridal Trial Session",
-    price: "₹3,500",
-    tag: "Studio Dry-Run",
-    desc: "In-studio 1-on-1 personalized color consultation, skin prep analysis, dry-run look & drape trial.",
-  },
-  {
-    id: "Hairstyling & Saree Draping",
-    label: "Hairstyling & Saree Draping",
-    price: "Bespoke",
-    tag: "Artisanal Styling",
-    desc: "Traditional South Indian braid styling, modern updos, luxury floral pinning & ironed pleat pinning.",
+    id: "Hair Styling",
+    label: "Hair Styling",
+    price: "₹2,000",
+    tag: "Artisanal",
+    desc: "Premium blow-dry / curls / basic updos, heat protection prep, and holding spray finish.",
   },
 ];
 
@@ -529,13 +529,23 @@ export function BookNow() {
     name: "",
     phone: "",
     email: "",
-    service: "Signature Bridal Makeup",
+    service: ARTISTRY_SERVICES[0].id,
     date: "",
     guests: "Bride Only",
     location: "",
     notes: "",
   });
   const [redirecting, setRedirecting] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      const lookParam = params.get("look");
+      if (lookParam && ARTISTRY_SERVICES.some(s => s.id === lookParam)) {
+        setForm(prev => ({ ...prev, service: lookParam }));
+      }
+    }
+  }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -609,14 +619,14 @@ export function BookNow() {
                         </p>
                       </div>
                     </div>
-                    <span className="nav-label text-[10px] text-primary border border-primary/30 bg-primary/10 px-2.5 py-1 rounded-full uppercase tracking-widest">
+                    <span className="nav-label text-[10px] text-primary border border-primary/30 bg-primary/10 px-3 py-1 pb-[3px] rounded-full uppercase flex items-center justify-center text-center">
                       4 Steps
                     </span>
                   </div>
 
                   {/* Vertical Timeline with hairline connector */}
                   <div className="relative pl-2 space-y-6 md:space-y-7">
-                    <div className="absolute left-[21px] top-4 bottom-4 w-px bg-gradient-to-b from-primary/40 via-primary/20 to-transparent pointer-events-none" />
+                    <div className="absolute left-[21.5px] top-4 bottom-4 w-px bg-gradient-to-b from-primary/40 via-primary/20 to-transparent pointer-events-none" />
 
                     {[
                       {
@@ -641,7 +651,7 @@ export function BookNow() {
                       },
                     ].map((s) => (
                       <div key={s.step} className="flex gap-4 items-start relative z-10">
-                        <span className="w-7 h-7 rounded-full bg-[#1A1410] border border-primary/40 text-primary text-xs font-medium flex items-center justify-center flex-shrink-0 mt-0.5 shadow-[0_0_10px_hsl(28_55%_58%/0.15)] ring-2 ring-[#161310]">
+                        <span className="w-7 h-7 rounded-full bg-[#1A1410] border border-primary/40 text-primary text-[11px] font-medium flex items-center justify-center flex-shrink-0 mt-0.5 shadow-[0_0_10px_hsl(28_55%_58%/0.15)] ring-2 ring-[#161310] leading-none pt-[1px]">
                           {s.step}
                         </span>
                         <div>

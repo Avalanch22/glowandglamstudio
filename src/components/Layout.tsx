@@ -64,7 +64,7 @@ export default function Layout({
             Glow & Glam
           </span>
           <span className="nav-label text-[9px] md:text-[11px] text-primary tracking-[0.25em] md:tracking-[0.3em] uppercase block mt-1">
-            Luxury Studio — Chennai
+            Luxury Studio
           </span>
         </a>
 
@@ -87,75 +87,7 @@ export default function Layout({
         {children}
       </main>
 
-      {/* ── FOOTER ── */}
-      <footer className="relative mt-12 md:mt-16 border-t border-border/30 overflow-hidden">
-        {/* Ambient glow */}
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[180px]
-                        bg-[radial-gradient(ellipse,hsl(28_55%_58%/0.06)_0%,transparent_70%)] pointer-events-none" />
-        {/* Brand + nav grid */}
-        <div className="container mx-auto px-5 md:px-6 py-8 md:py-12 relative">
-          {/* Brand row on mobile */}
-          <div className="flex items-center gap-3 mb-6 md:hidden">
-            <img src={logoImg} alt="Glow & Glam Studio" className="h-9 w-9 rounded-full object-cover border border-primary/30" />
-            <div>
-              <span className="font-display text-base block">Glow & Glam</span>
-              <p className="text-[10px] text-muted-foreground tracking-widest uppercase">Luxury Studio — Chennai</p>
-            </div>
-          </div>
-          <div className="grid grid-cols-3 md:grid-cols-4 gap-6 md:gap-12">
-            {/* Desktop brand col */}
-            <div className="hidden md:block">
-              <div className="flex items-center gap-2 mb-4">
-                <img src={logoImg} alt="Glow & Glam Studio" className="h-8 w-8 rounded-full object-cover border border-primary/30" />
-                <span className="font-display text-base">Glow & Glam</span>
-              </div>
-              <p className="text-xs text-muted-foreground leading-relaxed max-w-[200px]">
-                Futuristic beauty. Minimal luxury. Signature glow.
-              </p>
-            </div>
-            {[
-              {
-                title: 'Explore', links: [
-                  { label: 'Gallery', href: '/portfolio.html' },
-                  { label: 'Packages', href: '/packages.html' },
-                  { label: 'Book Now', href: '/book-now.html' },
-                ]
-              },
-              {
-                title: 'Connect', links: [
-                  { label: 'About Studio', href: '/about.html' },
-                  { label: 'Contact', href: '/contact.html' },
-                  { label: 'Reservations', href: '/book-now.html' },
-                ]
-              },
-              {
-                title: 'Studio', links: [
-                  { label: 'Chennai, TN', href: '#' },
-                  { label: 'glowandglamstudio@gmail.com', href: 'mailto:glowandglamstudio@gmail.com' },
-                  { label: '+91 88388 19820', href: 'tel:+918838819820' },
-                ]
-              },
-            ].map((col) => (
-              <div key={col.title}>
-                <h4 className="nav-label text-foreground mb-3 md:mb-5 text-[10px] md:text-[0.785rem]">{col.title}</h4>
-                <ul className="space-y-2.5 md:space-y-3">
-                  {col.links.map((l) => (
-                    <li key={l.label}>
-                      <a href={l.href} className="text-[11px] md:text-xs text-muted-foreground hover:text-primary transition-colors link-underline break-all">
-                        {l.label}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </div>
-        <div className="container mx-auto px-5 md:px-6 pb-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 border-t border-border/20 pt-5">
-          <p className="text-[11px] text-muted-foreground">© 2026 Glow & Glam Studio. All rights reserved.</p>
-          <p className="text-[11px] text-muted-foreground">Crafted with precision.</p>
-        </div>
-      </footer>
+
 
       {/* ── WhatsApp Float (left side) with Official Pixel-Perfect Vector ── */}
       <a

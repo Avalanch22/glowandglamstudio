@@ -1,52 +1,61 @@
 {
   "services": [
     {
-      "id": "bridal-makeup",
-      "title": "Bridal",
+      "id": "bridal-makeover",
+      "title": "Bridal Makeover",
       "tagline": "Your most important morning, perfected.",
       "description": "Exquisite, transfer-proof bridal looks engineered to last from your morning rituals through the final dance. We sculpt light itself onto your face using HD airbrush and luxury products.",
-      "whatsapp": "Hi Glow %26 Glam! I'd like to inquire about Bridal Makeup for my wedding date.",
+      "whatsapp": "Hi Glow %26 Glam! I'd like to inquire about Bridal Makeover for my wedding date.",
       "category": "bridal",
       "faqs": [
         { "q": "How far in advance should I book?", "a": "We recommend booking 3–6 months in advance for bridal, especially during peak wedding season (Oct–Feb). Popular dates fill very quickly." },
-        { "q": "Do you offer a trial session?", "a": "Yes — a bridal trial is strongly encouraged 4–6 weeks before your wedding. It's included in our premium packages and available à la carte." },
+        { "q": "Do you offer a trial session?", "a": "Yes — a bridal trial is strongly encouraged 4–6 weeks before your wedding. It's available à la carte." },
         { "q": "Do you travel to the venue?", "a": "Yes. We offer on-location services. Travel fees may apply outside Chennai city limits." },
         { "q": "What products do you use?", "a": "We use luxury brands — MAC, Charlotte Tilbury, Armani Beauty, and Temptu airbrush system — chosen for longevity and skin compatibility." }
       ]
     },
     {
-      "id": "reception-makeup",
-      "title": "Reception",
+      "id": "reception-makeover",
+      "title": "Reception Makeover",
       "tagline": "Where the evening begins.",
       "description": "A bolder, more luminous evolution of your bridal look. Designed for flash photography, dance floors, and the long night ahead.",
-      "whatsapp": "Hi Glow %26 Glam! I'd like to inquire about Reception Makeup.",
+      "whatsapp": "Hi Glow %26 Glam! I'd like to inquire about Reception Makeover.",
       "category": "reception",
       "faqs": []
     },
     {
-      "id": "party-makeup",
-      "title": "Party",
+      "id": "model-photoshoot",
+      "title": "Model Photoshoot Makeover",
+      "tagline": "Editorial precision for the lens.",
+      "description": "Camera-ready styling with creative flexibility. Designed for portfolios, fashion spreads, and commercial shoots.",
+      "whatsapp": "Hi Glow %26 Glam! I'd like to inquire about the Model Photoshoot Makeover.",
+      "category": "photoshoot",
+      "faqs": []
+    },
+    {
+      "id": "haldi-mehendi",
+      "title": "Haldi & Mehendi Looks",
+      "tagline": "Fresh, floral, and vibrant.",
+      "description": "A dewy, sweat-proof look that feels lightweight but holds up through all the fun, color, and celebration of pre-wedding events.",
+      "whatsapp": "Hi Glow %26 Glam! I'd like to inquire about the Haldi & Mehendi Looks.",
+      "category": "event",
+      "faqs": []
+    },
+    {
+      "id": "evening-party",
+      "title": "Evening Party Looks",
       "tagline": "Make every entrance count.",
       "description": "Sophisticated glam for galas, birthdays, cocktail evenings, and anything in between. Stand out with our signature luminous base.",
-      "whatsapp": "Hi Glow %26 Glam! I'd like to inquire about Party Makeup.",
+      "whatsapp": "Hi Glow %26 Glam! I'd like to inquire about Evening Party Looks.",
       "category": "party",
       "faqs": []
     },
     {
-      "id": "engagement-makeup",
-      "title": "Engagement",
-      "tagline": "Soft. Romantic. Unforgettable.",
-      "description": "A dewy, ethereal look that photographs beautifully and feels effortless. Perfect for ring ceremony moments and intimate celebrations.",
-      "whatsapp": "Hi Glow %26 Glam! I'd like to inquire about Engagement Makeup.",
-      "category": "engagement",
-      "faqs": []
-    },
-    {
-      "id": "hairstyling",
-      "title": "Hairstyling",
+      "id": "hair-styling",
+      "title": "Hair Styling",
       "tagline": "Structure that moves. Architecture that flows.",
       "description": "Expert hair styling from sculptural updos to textured waves, paired with flawless saree and dupatta draping.",
-      "whatsapp": "Hi Glow %26 Glam! I'd like to inquire about Hairstyling %26 Draping.",
+      "whatsapp": "Hi Glow %26 Glam! I'd like to inquire about Hair Styling.",
       "category": "hairstyling",
       "faqs": [
         { "q": "Do you offer both hair and makeup?", "a": "Yes. We specialize in full-glam transformations combining hair styling, makeup, and draping for a cohesive editorial look." },

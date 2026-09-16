@@ -14,11 +14,12 @@ import { Check, X, Sparkles, MessageCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const packageIcons: Record<string, React.ComponentType<{ className?: string }>> = {
-  'signature-bridal': PerfumeIcon,
-  'bridal-hd': MascaraIcon,
-  'reception-engagement': BlushIcon,
-  'party-glam': LipstickIcon,
-  'bridal-trial': SpongeIcon,
+  'bridal-makeover': PerfumeIcon,
+  'reception-makeover': BlushIcon,
+  'model-photoshoot': MascaraIcon,
+  'haldi-mehendi': SpongeIcon,
+  'evening-party': LipstickIcon,
+  'hair-styling': BrushIcon,
 };
 
 export function Packages() {
@@ -34,14 +35,7 @@ export function Packages() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
 
-  // Section 1: Most Popular (Signature Bridal, 2 cards width) + Regular sized card on its right (Bridal HD, 1 card width)
-  const popularPkg = packages.find((p) => p.featured) || packages[0];
-  const cardOnRight = packages.find((p) => p.id === 'bridal-hd') || packages[1];
 
-  // Section 2: The 3 remaining cards (Reception/Engagement, Party Glam, Bridal Trial - each 1 card width)
-  const remainingPackages = packages.filter(
-    (p) => p.id !== popularPkg.id && p.id !== cardOnRight.id
-  );
 
   const renderCard = (
     pkg: typeof packages[0],
@@ -75,39 +69,29 @@ export function Packages() {
               : "bg-card/50 hover:bg-card/80 border-border/50 hover:border-primary/50 shadow-lg"
           )}
         >
-          {/* ── SECTION 1: HEADER & TITLE (Fixed ~120px) ── */}
-          <div className="h-[120px] flex flex-col justify-between border-b border-border/25 pb-3">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2.5">
-                <div
-                  className={cn(
-                    "w-10 h-10 rounded-full border flex items-center justify-center shadow-sm flex-shrink-0",
-                    isPopular
-                      ? "bg-primary text-primary-foreground border-primary shadow-[0_0_12px_hsl(28_55%_58%/0.4)]"
-                      : "bg-primary/15 text-primary border-primary/30 shadow-[0_0_10px_hsl(28_55%_58%/0.2)]"
-                  )}
-                >
-                  <IconComponent className="w-5 h-5" />
-                </div>
-                <div>
-                  <span className="nav-label text-[10px] uppercase tracking-[0.2em] text-primary block leading-none">
-                    {pkg.tier} Tier
-                  </span>
-                </div>
-              </div>
-
-              {isPopular && (
-                <span className="nav-label text-[10px] font-medium text-primary border border-primary/70 px-3 py-1 rounded-full bg-primary/20 shadow-[0_0_10px_hsl(28_55%_58%/0.3)] whitespace-nowrap">
-                  ★ Most Popular
-                </span>
-              )}
+          {isPopular && (
+            <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 bg-primary text-primary-foreground text-[10px] uppercase tracking-widest font-bold rounded-full shadow-[0_4px_14px_hsl(28_55%_58%/0.4)] border border-primary/20 whitespace-nowrap z-20">
+              ★ Most Popular Choice
             </div>
+          )}
 
-            <div className="h-[62px] flex items-center">
+          {/* ── SECTION 1: HEADER & TITLE (Fixed ~100px) ── */}
+          <div className="h-[100px] flex items-center border-b border-border/25 pb-2 relative mt-2">
+            <div className="flex items-center gap-4">
+              <div
+                className={cn(
+                  "w-12 h-12 rounded-full border flex items-center justify-center shadow-sm flex-shrink-0",
+                  isPopular
+                    ? "bg-primary text-primary-foreground border-primary shadow-[0_0_12px_hsl(28_55%_58%/0.4)]"
+                    : "bg-primary/15 text-primary border-primary/30 shadow-[0_0_10px_hsl(28_55%_58%/0.2)]"
+                )}
+              >
+                <IconComponent className="w-6 h-6" />
+              </div>
               <h2
                 className={cn(
-                  "font-display text-2xl font-light tracking-tight leading-tight line-clamp-2",
-                  isPopular ? "text-primary text-2xl md:text-3xl" : "text-foreground"
+                  "font-display text-2xl md:text-3xl font-light tracking-tight leading-tight line-clamp-2",
+                  isPopular ? "text-primary" : "text-foreground"
                 )}
                 title={pkg.name}
               >
@@ -306,146 +290,13 @@ export function Packages() {
           </p>
 
           <Reveal>
-            <div className="space-y-8 md:space-y-10">
-              {/* ── SECTION 1: TOP TIER (Most Popular Card = 2 Cards Combined Width + 1 Card on Right) ── */}
-              <div>
-                <div className="flex items-center gap-3 mb-6 max-w-6xl mx-auto">
-                  <span className="nav-label text-[11px] uppercase tracking-[0.25em] text-primary font-medium flex items-center gap-2">
-                    <Sparkles className="w-3.5 h-3.5 text-primary" />
-                    Signature Bridal Collections
-                  </span>
-                  <div className="h-px bg-gradient-to-r from-primary/40 to-transparent flex-1" />
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto items-stretch">
-                  {/* Left: Most Popular Card (Signature Bridal) - 2 cards combined width! */}
-                  <div
-                    className="md:col-span-2 w-full relative transition-all duration-200 z-10"
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    <div className="relative flex flex-col md:flex-row h-auto md:h-[555px] w-full rounded-xl transition-all duration-300 powder-card border-2 border-primary/70 bg-[#181410] shadow-[0_0_28px_hsl(28_55%_58%/0.22)] ring-1 ring-primary/40 hover:border-primary p-5 md:p-7 select-none gap-5 md:gap-7 justify-between overflow-hidden">
-                      {/* Left Side: Header, Title, Most Popular Cylinder, Pricing, Description, WhatsApp CTA */}
-                      <div className="flex-1 flex flex-col justify-between h-full space-y-3">
-                        <div>
-                          {/* Tier & Icon */}
-                          <div className="flex items-center gap-2.5 mb-2.5">
-                            <div className="w-10 h-10 rounded-full border border-primary bg-primary text-primary-foreground flex items-center justify-center shadow-[0_0_12px_hsl(28_55%_58%/0.4)] flex-shrink-0">
-                              <PerfumeIcon className="w-5 h-5" />
-                            </div>
-                            <span className="nav-label text-[10px] uppercase tracking-[0.2em] text-primary block leading-none">
-                              {popularPkg.tier} Tier · Flagship
-                            </span>
-                          </div>
-
-                          {/* Card Name */}
-                          <h2 className="font-display text-3xl md:text-4xl font-light text-primary tracking-tight leading-tight">
-                            {popularPkg.name}
-                          </h2>
-
-                          {/* Most Popular Cylinder moved directly below the card name */}
-                          <div className="mt-2 mb-2.5">
-                            <span className="inline-flex items-center nav-label text-[10px] font-medium text-primary border border-primary/70 px-3 py-0.5 rounded-full bg-primary/20 shadow-[0_0_10px_hsl(28_55%_58%/0.3)] whitespace-nowrap">
-                              ★ Most Popular Choice
-                            </span>
-                          </div>
-
-                          {/* Pricing */}
-                          <div className="flex items-baseline gap-2.5 mb-1">
-                            <span className="font-display text-3xl md:text-4xl font-light text-foreground tracking-tight">
-                              {popularPkg.price}
-                            </span>
-                            <span className="text-xs text-muted-foreground font-light">
-                              {popularPkg.note} · All Inclusive
-                            </span>
-                          </div>
-                          <p className="text-[11px] text-muted-foreground/75 font-light tracking-wide mb-2.5">
-                            Transparent pricing · Taxes & consultation included
-                          </p>
-
-                          {/* Shortened concise description */}
-                          <p className="text-muted-foreground text-xs leading-relaxed font-light line-clamp-2">
-                            Couture HD airbrush bridal makeup for a luminous, transfer-proof radiance engineered to last all day and night.
-                          </p>
-                        </div>
-
-                        {/* Shortened button */}
-                        <div className="pt-2.5 border-t border-border/25">
-                          <Button
-                            size="lg"
-                            className="w-full h-11 px-4 rounded-md font-medium text-xs md:text-sm flex items-center justify-center gap-2 transition-all shadow-md overflow-hidden btn-lipstick"
-                            asChild
-                          >
-                            <a
-                              href={`https://wa.me/918838819820?text=${encodeURIComponent(popularPkg.whatsapp)}`}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="w-full flex items-center justify-center gap-1.5"
-                            >
-                              <MessageCircle className="w-4 h-4 flex-shrink-0" />
-                              <span className="whitespace-nowrap font-medium">Book on WhatsApp</span>
-                            </a>
-                          </Button>
-                        </div>
-                      </div>
-
-                      {/* Right Side: Complete Features Checklist Panel (Cleanly contained) */}
-                      <div className="w-full md:w-[270px] lg:w-[290px] bg-background/50 border border-primary/30 rounded-xl p-4 md:p-5 shadow-inner flex flex-col justify-between flex-shrink-0 overflow-hidden">
-                        <div>
-                          <p className="nav-label text-[11px] text-primary tracking-wider uppercase mb-2.5 flex items-center gap-2">
-                            <Sparkles className="w-3.5 h-3.5 text-primary flex-shrink-0" />
-                            Complete Inclusions ({popularPkg.features.length}):
-                          </p>
-                          <ul className="space-y-2">
-                            {popularPkg.features.map((f) => (
-                              <li key={f} className="flex items-start gap-2 text-xs text-foreground/90 font-light">
-                                <span className="w-4 h-4 rounded-full bg-primary text-primary-foreground flex items-center justify-center flex-shrink-0 mt-0.5 shadow-sm">
-                                  <Check className="w-2.5 h-2.5" />
-                                </span>
-                                <span className="leading-snug">{f}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                        <div className="mt-3 pt-2.5 border-t border-border/30 text-[10px] text-primary/80 font-light flex items-center gap-1.5">
-                          <span>✓ Complimentary trial consultation</span>
-                        </div>
-                      </div>
-                    </div>
+            <div className="mt-8 md:mt-12">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto items-stretch">
+                {packages.map((pkg, idx) => (
+                  <div key={pkg.id} className="w-full">
+                    {renderCard(pkg, pkg.featured || false, (idx % 3 === 2) ? "left" : "right")}
                   </div>
-
-                  {/* Right: Regular sized card on its right (Bridal HD) - 1 card width! */}
-                  <div className="md:col-span-1 w-full">
-                    {renderCard(cardOnRight, false, "left")}
-                  </div>
-                </div>
-              </div>
-
-              {/* ── SECTION 2: THE 3 REMAINING REGULAR SIZED CARDS ── */}
-              <div>
-                <div className="flex items-center gap-3 mb-6 max-w-6xl mx-auto">
-                  <span className="nav-label text-[11px] uppercase tracking-[0.25em] text-primary font-medium flex items-center gap-2">
-                    <Sparkles className="w-3.5 h-3.5 text-primary" />
-                    Occasion & Trial Services
-                  </span>
-                  <div className="h-px bg-gradient-to-r from-primary/40 to-transparent flex-1" />
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto items-stretch">
-                  {/* Card 1: Reception / Engagement (flyout to the right) */}
-                  <div className="md:col-span-1 w-full">
-                    {renderCard(remainingPackages[0], false, "right")}
-                  </div>
-
-                  {/* Card 2: Party Glam (flyout to the right) */}
-                  <div className="md:col-span-1 w-full">
-                    {renderCard(remainingPackages[1], false, "right")}
-                  </div>
-
-                  {/* Card 3: Bridal Trial (flyout to the left) */}
-                  <div className="md:col-span-1 w-full">
-                    {renderCard(remainingPackages[2], false, "left")}
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
           </Reveal>

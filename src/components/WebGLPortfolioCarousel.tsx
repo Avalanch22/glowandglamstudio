@@ -5,7 +5,7 @@ declare const gsap: any;
 declare const THREE: any;
 
 const imageModules = import.meta.glob<string>(
-  '/src/assets/gallery/portfolio-featured/*.{jpg,jpeg,png,webp}',
+  '/src/assets/images/portfolio-featured/*.{jpg,jpeg,png,webp}',
   { eager: true, import: 'default' }
 );
 
@@ -73,7 +73,7 @@ export function WebGLPortfolioCarousel() {
 
         const resolveImage = (filename: string) => {
             const found = Object.entries(imageModules).find(([path]) => path.includes(filename));
-            return found ? found[1] : `/src/assets/gallery/portfolio-featured/${filename}`;
+            return found ? found[1] : `/src/assets/images/portfolio-featured/${filename}`;
         };
         
         const portfolio = portfolioData.portfolio as any[];
@@ -385,8 +385,8 @@ export function WebGLPortfolioCarousel() {
   }, []);
 
   return (
-    <section className="relative px-6 pb-16 overflow-hidden">
-      <div className="container mx-auto relative">
+    <div className="relative w-full overflow-hidden">
+      <div className="relative w-full">
         <main className="slider-wrapper relative w-full h-[450px] md:h-[700px] overflow-hidden rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.7)] border border-primary/20 bg-background" ref={containerRef}>
           <canvas className="webgl-canvas absolute inset-0 w-full h-full z-0 pointer-events-none"></canvas>
           
@@ -409,6 +409,7 @@ export function WebGLPortfolioCarousel() {
         {/* Navigation - mobile (outside image) */}
         <nav className="slides-navigation nav-mobile flex md:hidden relative mt-6 flex-wrap justify-center gap-3 px-2"></nav>
       </div>
-    </section>
+    </div>
   );
 }
+

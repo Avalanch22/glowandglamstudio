@@ -1,44 +1,27 @@
 {
   "packages": [
     {
-      "id": "signature-bridal",
-      "name": "Signature Bridal",
+      "id": "bridal-makeover",
+      "name": "Bridal Makeover",
       "tier": "Premium",
-      "price": "₹15,000",
+      "price": "₹10,000",
       "note": "Starting price",
       "featured": true,
       "features": [
-        "HD Airbrush foundation system",
+        "HD / Airbrush foundation",
         "Full contouring & highlight",
         "Luxury lash application",
         "Complete hair styling",
         "Dupatta / saree draping",
         "Touch-up kit provided"
       ],
-      "whatsapp": "Hi Glow %26 Glam! I'm interested in the Signature Bridal package."
+      "whatsapp": "Hi Glow %26 Glam! I'm interested in the Bridal Makeover package."
     },
     {
-      "id": "bridal-hd",
-      "name": "Bridal HD",
-      "tier": "Classic",
-      "price": "₹12,000",
-      "note": "Starting price",
-      "featured": false,
-      "features": [
-        "HD liquid foundation",
-        "Contouring & highlight",
-        "Luxury lash application",
-        "Complete hair styling",
-        "Dupatta / saree draping",
-        "Touch-up kit provided"
-      ],
-      "whatsapp": "Hi Glow %26 Glam! I'm interested in the Bridal HD package."
-    },
-    {
-      "id": "reception-engagement",
-      "name": "Reception / Engagement",
+      "id": "reception-makeover",
+      "name": "Reception Makeover",
       "tier": "Evening",
-      "price": "₹9,000",
+      "price": "₹8,000",
       "note": "Starting price",
       "featured": false,
       "features": [
@@ -48,13 +31,43 @@
         "Hair styling",
         "Saree / dupatta draping"
       ],
-      "whatsapp": "Hi Glow %26 Glam! I'm interested in the Reception/Engagement package."
+      "whatsapp": "Hi Glow %26 Glam! I'm interested in the Reception Makeover package."
     },
     {
-      "id": "party-glam",
-      "name": "Party Glam",
+      "id": "model-photoshoot",
+      "name": "Model Photoshoot Makeover",
+      "tier": "Editorial",
+      "price": "₹6,000",
+      "note": "Starting price",
+      "featured": false,
+      "features": [
+        "Camera-ready HD base",
+        "Creative or editorial styling",
+        "Multiple look transitions",
+        "On-set assistance available"
+      ],
+      "whatsapp": "Hi Glow %26 Glam! I'm interested in the Model Photoshoot Makeover package."
+    },
+    {
+      "id": "haldi-mehendi",
+      "name": "Haldi & Mehendi Looks",
       "tier": "Event",
-      "price": "₹5,000",
+      "price": "₹4,000",
+      "note": "Starting price",
+      "featured": false,
+      "features": [
+        "Dewy, sweat-proof base",
+        "Soft contouring",
+        "Floral jewelry styling assistance",
+        "Basic hair styling"
+      ],
+      "whatsapp": "Hi Glow %26 Glam! I'm interested in the Haldi & Mehendi package."
+    },
+    {
+      "id": "evening-party",
+      "name": "Evening Party Looks",
+      "tier": "Glamour",
+      "price": "₹3,000",
       "note": "Starting price",
       "featured": false,
       "features": [
@@ -63,22 +76,21 @@
         "Basic hairstyling",
         "Lash application"
       ],
-      "whatsapp": "Hi Glow %26 Glam! I'm interested in the Party Glam package."
+      "whatsapp": "Hi Glow %26 Glam! I'm interested in the Evening Party package."
     },
     {
-      "id": "bridal-trial",
-      "name": "Bridal Trial",
-      "tier": "Trial",
-      "price": "₹3,500",
-      "note": "À la carte",
+      "id": "hair-styling",
+      "name": "Hair Styling",
+      "tier": "À la carte",
+      "price": "₹2,000",
+      "note": "Starting price",
       "featured": false,
       "features": [
-        "Full in-studio trial session",
-        "Look consultation",
-        "Style documentation",
-        "Product recommendations"
+        "Expert updos or textured waves",
+        "Hair extension setting",
+        "Saree & dupatta draping"
       ],
-      "whatsapp": "Hi Glow %26 Glam! I'd like to book a Bridal Trial session."
+      "whatsapp": "Hi Glow %26 Glam! I'm interested in Hair Styling services."
     }
   ]
 }
