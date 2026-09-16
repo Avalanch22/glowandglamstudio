@@ -15,31 +15,36 @@ const { services } = contentData;
 const getService = (id: string) => services.find(s => s.id === id)!;
 
 const serviceIcons: Record<string, React.ComponentType<{ className?: string }>> = {
-  'bridal-makeup': CurlerIcon,
-  'reception-makeup': BlushIcon,
-  'party-makeup': LipstickIcon,
-  'engagement-makeup': SpongeIcon,
-  'hairstyling': PerfumeIcon,
+  'bridal-makeover': CurlerIcon,
+  'reception-makeover': BlushIcon,
+  'model-photoshoot': BrushIcon,
+  'haldi-mehendi': SpongeIcon,
+  'evening-party': LipstickIcon,
+  'hair-styling': PerfumeIcon,
 };
 
 export function ServiceBridal() {
-  const s = getService('bridal-makeup');
+  const s = getService('bridal-makeover');
   return <ServicePage {...s} />;
 }
 export function ServiceReception() {
-  const s = getService('reception-makeup');
+  const s = getService('reception-makeover');
+  return <ServicePage {...s} />;
+}
+export function ServicePhotoshoot() {
+  const s = getService('model-photoshoot');
+  return <ServicePage {...s} />;
+}
+export function ServiceHaldi() {
+  const s = getService('haldi-mehendi');
   return <ServicePage {...s} />;
 }
 export function ServiceParty() {
-  const s = getService('party-makeup');
-  return <ServicePage {...s} />;
-}
-export function ServiceEngagement() {
-  const s = getService('engagement-makeup');
+  const s = getService('evening-party');
   return <ServicePage {...s} />;
 }
 export function ServiceHairstyling() {
-  const s = getService('hairstyling');
+  const s = getService('hair-styling');
   return <ServicePage {...s} />;
 }
 

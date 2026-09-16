@@ -17,7 +17,7 @@ import {
 
 // Load review avatars dynamically
 const avatarModules = import.meta.glob<string>(
-  '/src/assets/gallery/reviews/*.{jpg,jpeg,png,webp}',
+  '/src/assets/images/reviews/*.{jpg,jpeg,png,webp}',
   { eager: true, import: 'default' }
 );
 const avatarUrls = Object.values(avatarModules);
@@ -560,3 +560,4 @@ export function Reviews() {
     </div>
   );
 }
+

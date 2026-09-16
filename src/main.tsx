@@ -11,13 +11,15 @@ import {
   ServicesHub,
   ServiceBridal,
   ServiceReception,
+  ServicePhotoshoot,
+  ServiceHaldi,
   ServiceParty,
-  ServiceEngagement,
   ServiceHairstyling,
 } from './pages/Services';
 import { Portfolio } from './pages/Portfolio';
 import { Packages } from './pages/Packages';
 import { BookNow, Contact } from './pages/Forms';
+import AdminUpload from './pages/Admin';
 
 function App() {
   const [currentPath, setCurrentPath] = useState(window.location.pathname);
@@ -109,11 +111,13 @@ function App() {
     if (path.includes('packages')) return { key: 'packages', Component: Packages };
     if (path.includes('book-now')) return { key: 'book-now', Component: BookNow };
     if (path.includes('contact')) return { key: 'contact', Component: Contact };
-    if (path.includes('services/bridal-makeup')) return { key: 'svc-bridal', Component: ServiceBridal };
-    if (path.includes('services/reception-makeup')) return { key: 'svc-reception', Component: ServiceReception };
-    if (path.includes('services/party-makeup')) return { key: 'svc-party', Component: ServiceParty };
-    if (path.includes('services/engagement-makeup')) return { key: 'svc-engagement', Component: ServiceEngagement };
-    if (path.includes('services/hairstyling')) return { key: 'svc-hair', Component: ServiceHairstyling };
+    if (path.includes('admin')) return { key: 'admin', Component: AdminUpload };
+    if (path.includes('services/bridal-makeover')) return { key: 'svc-bridal', Component: ServiceBridal };
+    if (path.includes('services/reception-makeover')) return { key: 'svc-reception', Component: ServiceReception };
+    if (path.includes('services/model-photoshoot')) return { key: 'svc-photoshoot', Component: ServicePhotoshoot };
+    if (path.includes('services/haldi-mehendi')) return { key: 'svc-haldi', Component: ServiceHaldi };
+    if (path.includes('services/evening-party')) return { key: 'svc-party', Component: ServiceParty };
+    if (path.includes('services/hair-styling')) return { key: 'svc-hair', Component: ServiceHairstyling };
     if (path.includes('services')) return { key: 'svc-hub', Component: ServicesHub };
     return { key: 'home', Component: Home };
   };

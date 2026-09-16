@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 
 // Load all portfolio images eagerly via Vite
 const imageModules = import.meta.glob<string>(
-  '/src/assets/gallery/portfolio-featured/*.{jpg,jpeg,png,webp}',
+  '/src/assets/images/portfolio-featured/*.{jpg,jpeg,png,webp}',
   { eager: true, import: 'default' }
 );
 
@@ -39,7 +39,7 @@ export function CylindricalGallery() {
   // Helper to resolve image URL
   const resolveImage = (filename: string) => {
     const found = Object.entries(imageModules).find(([path]) => path.includes(filename));
-    return found ? found[1] : `/src/assets/gallery/portfolio-featured/${filename}`;
+    return found ? found[1] : `/src/assets/images/portfolio-featured/${filename}`;
   };
 
   // Continuous gentle 3D auto-spin when idle
@@ -303,3 +303,4 @@ export function CylindricalGallery() {
     </div>
   );
 }
+

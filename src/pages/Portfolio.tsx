@@ -1,4 +1,5 @@
 import { useState, useEffect, useMemo } from 'react';
+import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Reveal } from '@/components/Layout';
 import {
@@ -22,16 +23,16 @@ function SparkleIcon({ className = '' }: { className?: string }) {
 }
 
 // Direct cover image imports for collection cards
-import bridalCover from '@/assets/gallery/bridal/01-traditional-radiance.jpg';
-import receptionCover from '@/assets/gallery/reception/01-evening-luminous.jpg';
-import engagementCover from '@/assets/gallery/engagement/01-ethereal-rose.jpg';
-import hairCover from '@/assets/gallery/hairstyling/01-sculpted-waves.jpg';
-import partyCover from '@/assets/gallery/party/01-party-shimmer.jpg';
-import featuredCover from '@/assets/gallery/portfolio-featured/01-signature-bride.jpg';
+import bridalCover from '@/assets/images/bridal/01-traditional-radiance.jpg';
+import receptionCover from '@/assets/images/reception/01-evening-luminous.jpg';
+import engagementCover from '@/assets/images/engagement/01-ethereal-rose.jpg';
+import hairCover from '@/assets/images/hairstyling/01-sculpted-waves.jpg';
+import partyCover from '@/assets/images/party/01-party-shimmer.jpg';
+import featuredCover from '@/assets/images/portfolio-featured/01-signature-bride.jpg';
 
 // Eagerly import all gallery images
 const galleryModules = import.meta.glob<{ default: string }>(
-  '/src/assets/gallery/*/*.{png,jpg,jpeg,webp}',
+  '/src/assets/images/*/*.{png,jpg,jpeg,webp}',
   { eager: true }
 );
 
@@ -48,64 +49,64 @@ interface Collection {
 
 const COLLECTIONS: Collection[] = [
   {
-    id: 'featured',
-    folder: 'portfolio-featured',
-    title: 'Signature Highlights',
-    subtitle: 'Master Curations',
-    tag: '8 Looks',
-    description: 'Our defining editorial transformations exemplifying the subtle, radiant "Quiet Glow".',
-    cover: featuredCover,
-    Icon: SparkleIcon,
-  },
-  {
-    id: 'bridal',
+    id: 'bridal-makeover',
     folder: 'bridal',
-    title: 'Bridal Couture',
-    subtitle: 'Sacred Rituals',
-    tag: '4 Looks',
-    description: 'Traditional temple gold harmony, sacred silk draping, and transfer-resistant HD airbrush radiance.',
+    title: 'Bridal Makeover',
+    subtitle: 'Premium',
+    tag: 'Starting ₹10,000',
+    description: 'HD / Airbrush foundation, full contouring, luxury lashes, and complete styling for your big day.',
     cover: bridalCover,
     Icon: CurlerIcon,
   },
   {
-    id: 'reception',
+    id: 'reception-makeover',
     folder: 'reception',
-    title: 'Reception Glam',
-    subtitle: 'Evening Drama',
-    tag: '4 Looks',
-    description: 'Smokey bronze architecture, velvety nude pout, and high-wattage red carpet evening glow.',
+    title: 'Reception Makeover',
+    subtitle: 'Evening',
+    tag: 'Starting ₹8,000',
+    description: 'HD makeup full look, eye-forward styling, and dramatic evening glamour.',
     cover: receptionCover,
     Icon: BlushIcon,
   },
   {
-    id: 'engagement',
+    id: 'model-photoshoot',
+    folder: 'portfolio-featured',
+    title: 'Model Photoshoot Makeover',
+    subtitle: 'Editorial',
+    tag: 'Starting ₹6,000',
+    description: 'Camera-ready HD base, creative editorial styling, and multiple look transitions.',
+    cover: featuredCover,
+    Icon: SparkleIcon,
+  },
+  {
+    id: 'haldi-mehendi',
     folder: 'engagement',
-    title: 'Engagement & Roka',
-    subtitle: 'Romantic Vows',
-    tag: '4 Looks',
-    description: 'Featherlight dewy glass skin, soft rose petal blush, and effortless daytime enchantment.',
+    title: 'Haldi & Mehendi Looks',
+    subtitle: 'Event',
+    tag: 'Starting ₹4,000',
+    description: 'Dewy, sweat-proof base, soft contouring, and floral jewelry styling assistance.',
     cover: engagementCover,
     Icon: LipstickIcon,
   },
   {
-    id: 'hairstyling',
-    folder: 'hairstyling',
-    title: 'Hair Architecture',
-    subtitle: 'Sculpted Form',
-    tag: '4 Looks',
-    description: 'Hollywood textured waves, modern jasmine floral crowns, and intricate bridal braid architecture.',
-    cover: hairCover,
-    Icon: PerfumeIcon,
-  },
-  {
-    id: 'party',
+    id: 'evening-party',
     folder: 'party',
-    title: 'Party & Festive',
-    subtitle: 'Celebration Glam',
-    tag: '4 Looks',
-    description: 'Sweat-proof, high-sparkle celebration artistry calibrated to stay radiant until sunrise.',
+    title: 'Evening Party Looks',
+    subtitle: 'Glamour',
+    tag: 'Starting ₹3,000',
+    description: 'Flawless event base, contouring, basic hairstyling, and lash application.',
     cover: partyCover,
     Icon: PaletteIcon,
+  },
+  {
+    id: 'hair-styling',
+    folder: 'hairstyling',
+    title: 'Hair Styling',
+    subtitle: 'À la carte',
+    tag: 'Starting ₹2,000',
+    description: 'Expert updos or textured waves, hair extension setting, and saree draping.',
+    cover: hairCover,
+    Icon: PerfumeIcon,
   },
 ];
 
@@ -237,8 +238,7 @@ const PHOTO_METADATA: Record<string, { title: string; desc: string }> = {
 };
 
 export function Portfolio() {
-  const [selectedCollectionId, setSelectedCollectionId] = useState<string>('featured');
-  const [viewMode, setViewMode] = useState<'grid' | '3d'>('grid');
+  const [selectedCollectionId, setSelectedCollectionId] = useState<string>('bridal-makeover');
   const [activePhotoIndex, setActivePhotoIndex] = useState<number | null>(null);
 
   const activeCollection = useMemo(() => {
@@ -249,7 +249,7 @@ export function Portfolio() {
   const currentPhotos = useMemo(() => {
     const folder = activeCollection.folder;
     return Object.entries(galleryModules)
-      .filter(([path]) => path.includes(`/gallery/${folder}/`))
+      .filter(([path]) => path.includes(`/images/${folder}/`))
       .sort(([a], [b]) => a.localeCompare(b))
       .map(([path, mod]) => {
         const filename = path.split('/').pop() || '';
@@ -311,31 +311,18 @@ export function Portfolio() {
                 editorial projects, and celebration looks.
               </p>
             </div>
-
-            {/* View Mode Switcher (Grid vs 3D Slider) */}
-            <div className="flex items-center gap-1.5 p-1 rounded-full bg-card/80 border border-border/60 backdrop-blur-md self-start md:self-auto shadow-sm">
-              <button
-                onClick={() => setViewMode('grid')}
-                className={`px-4 py-1.5 rounded-full text-xs font-medium transition-all duration-300 ${
-                  viewMode === 'grid'
-                    ? 'bg-primary text-primary-foreground shadow-md'
-                    : 'text-muted-foreground hover:text-foreground'
-                }`}
-              >
-                Collection Grid
-              </button>
-              <button
-                onClick={() => setViewMode('3d')}
-                className={`px-4 py-1.5 rounded-full text-xs font-medium transition-all duration-300 ${
-                  viewMode === '3d'
-                    ? 'bg-primary text-primary-foreground shadow-md'
-                    : 'text-muted-foreground hover:text-foreground'
-                }`}
-              >
-                Cinematic 3D
-              </button>
-            </div>
           </div>
+
+          {/* ── CINEMATIC 3D CAROUSEL ── */}
+          <Reveal>
+            <div className="mb-14">
+              <div className="text-center mb-6">
+                <span className="nav-label text-primary text-xs uppercase tracking-widest">WebGL Viewport</span>
+                <h3 className="font-display text-2xl md:text-3xl font-light mt-1">Interactive Cinematic Carousel</h3>
+              </div>
+              <WebGLPortfolioCarousel />
+            </div>
+          </Reveal>
 
           {/* ── COLLECTION CARDS (21st.dev / v0 Luxury Style) ── */}
           <div className="mb-14">
@@ -358,10 +345,7 @@ export function Portfolio() {
                 return (
                   <button
                     key={col.id}
-                    onClick={() => {
-                      setSelectedCollectionId(col.id);
-                      setViewMode('grid');
-                    }}
+                    onClick={() => setSelectedCollectionId(col.id)}
                     className={`group relative text-left rounded-xl overflow-hidden p-3.5 md:p-4 flex flex-col justify-between min-h-[170px] md:min-h-[210px] transition-all duration-300 border cursor-pointer ${
                       isSelected
                         ? 'border-primary ring-2 ring-primary/40 bg-card/90 shadow-[0_0_28px_hsl(28_55%_58%/0.35)] -translate-y-1'
@@ -422,18 +406,7 @@ export function Portfolio() {
             </div>
           </div>
 
-          {/* ── ACTIVE COLLECTION PHOTOS GALLERY / OR 3D CAROUSEL ── */}
-          {viewMode === '3d' ? (
-            <Reveal>
-              <div className="mt-6 rounded-2xl overflow-hidden border border-border/40 p-2 md:p-6 bg-card/20 backdrop-blur-sm">
-                <div className="text-center mb-6">
-                  <span className="nav-label text-primary text-xs uppercase tracking-widest">WebGL Viewport</span>
-                  <h3 className="font-display text-2xl md:text-3xl font-light mt-1">Interactive Cinematic Carousel</h3>
-                </div>
-                <WebGLPortfolioCarousel />
-              </div>
-            </Reveal>
-          ) : (
+          {/* ── ACTIVE COLLECTION PHOTOS GALLERY ── */}
             <section className="relative">
               {/* Collection Banner Header */}
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6 p-4 rounded-xl bg-card/50 border border-border/40 backdrop-blur-sm">
@@ -449,7 +422,7 @@ export function Portfolio() {
                   </p>
                 </div>
                 <Button size="sm" className="btn-lipstick self-start sm:self-auto text-xs px-4" asChild>
-                  <a href="/book-now.html">Book This Collection</a>
+                  <a href={`/book-now.html?look=${encodeURIComponent(activeCollection.title)}`}>Book This Collection</a>
                 </Button>
               </div>
 
@@ -515,12 +488,12 @@ export function Portfolio() {
                 </motion.div>
               </AnimatePresence>
             </section>
-          )}
         </div>
       </section>
 
       {/* ── FULL-SCREEN LIGHTBOX MODAL ── */}
-      <AnimatePresence>
+      {typeof document !== 'undefined' && createPortal(
+        <AnimatePresence>
         {activePhotoIndex !== null && currentPhotos[activePhotoIndex] && (
           <motion.div
             initial={{ opacity: 0 }}
@@ -616,10 +589,10 @@ export function Portfolio() {
                   <Button asChild size="lg" className="btn-lipstick w-full text-xs py-5">
                     <a
                       href={`/book-now.html?look=${encodeURIComponent(
-                        currentPhotos[activePhotoIndex].title
+                        currentPhotos[activePhotoIndex].collection
                       )}`}
                     >
-                      Book This Look
+                      Book This Collection
                     </a>
                   </Button>
                   <Button
@@ -635,7 +608,10 @@ export function Portfolio() {
             </motion.div>
           </motion.div>
         )}
-      </AnimatePresence>
+        </AnimatePresence>,
+        document.body
+      )}
     </div>
   );
 }
+

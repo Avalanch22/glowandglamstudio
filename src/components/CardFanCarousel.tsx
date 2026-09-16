@@ -5,7 +5,7 @@ import { cn } from '@/lib/utils';
 
 // Load gallery images eagerly via Vite
 const imageModules = import.meta.glob<string>(
-  '/src/assets/gallery/*/*.{jpg,jpeg,png,webp}',
+  '/src/assets/images/*/*.{jpg,jpeg,png,webp}',
   { eager: true, import: 'default' }
 );
 
@@ -44,24 +44,32 @@ export function CardFanCarousel({ category = 'hero', title, description, classNa
 
   const [activeIndex, setActiveIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
-  const [selectedImage, setSelectedImage] = useState<FanCardItem | null>(null);
+  const [viewMode, setViewMode] = useState<'fan' | 'split'>('fan');
+  const [isMobile, setIsMobile] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const count = items.length;
 
-  // Auto-cycle every 5.5s unless hovered
+  // Auto-cycle every 5.5s unless hovered or in split mode
   useEffect(() => {
-    if (isHovered || count <= 1) return;
+    if (isHovered || viewMode === 'split' || count <= 1) return;
     const timer = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % count);
     }, 5500);
     return () => clearInterval(timer);
-  }, [isHovered, count]);
+  }, [isHovered, count, viewMode]);
 
-  // Close lightbox on escape
+  // Close split view on escape
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setSelectedImage(null);
+      if (e.key === "Escape") setViewMode('fan');
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
@@ -107,33 +115,70 @@ export function CardFanCarousel({ category = 'hero', title, description, classNa
         {/* ── CARD FAN STAGE ── */}
         <div
           ref={containerRef}
-          className="relative w-full max-w-5xl mx-auto h-[440px] md:h-[490px] flex items-center justify-center cursor-grab active:cursor-grabbing"
+          className={cn("relative w-full max-w-5xl mx-auto flex items-center justify-center cursor-grab active:cursor-grabbing transition-all duration-700", viewMode === 'split' ? 'h-[580px] md:h-[550px]' : 'h-[440px] md:h-[490px]')}
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
+          {viewMode === 'split' && (
+            <button
+              onClick={() => setViewMode('fan')}
+              className="absolute top-0 right-2 md:right-10 z-[60] w-10 h-10 rounded-full bg-card/60 backdrop-blur-md border border-primary/40 flex items-center justify-center text-primary hover:bg-primary hover:text-black transition-all duration-300 shadow-lg hover:scale-110"
+              aria-label="Close split view"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"/>
+                <line x1="6" y1="6" x2="18" y2="18"/>
+              </svg>
+            </button>
+          )}
+
           {items.map((item, idx) => {
             let diff = idx - activeIndex;
             if (diff > count / 2) diff -= count;
             if (diff < -count / 2) diff += count;
 
             const isCenter = diff === 0;
-            const isVisible = Math.abs(diff) <= 3;
+            const isSplit = viewMode === 'split';
+            
+            // In split mode show all, in fan mode show only closest neighbors to prevent heavy stacking
+            const isVisible = isSplit || Math.abs(diff) <= 3;
 
             if (!isVisible) return null;
 
-            const rotateZ = diff * (isHovered ? 12 : 7.5);
-            const translateX = diff * (isHovered ? 125 : 85);
-            const translateY = Math.abs(diff) * Math.abs(diff) * (isHovered ? 18 : 12);
-            const scale = isCenter ? 1.06 : Math.max(0.8, 1 - Math.abs(diff) * 0.08);
-            const zIndex = 30 - Math.abs(diff) * 5;
-            const opacity = isCenter ? 1 : Math.max(0.35, 1 - Math.abs(diff) * 0.25);
+            let translateX, translateY, rotateZ, scale, zIndex, opacity;
+
+            if (isSplit) {
+              if (isCenter) {
+                translateX = isMobile ? 0 : -220;
+                translateY = isMobile ? -100 : 0;
+                rotateZ = 0;
+                scale = isMobile ? 1.05 : 1.25;
+                zIndex = 50;
+                opacity = 1;
+              } else {
+                let stackPos = diff > 0 ? diff : diff + count;
+                translateX = isMobile ? 0 : 250 + (stackPos * 25);
+                translateY = isMobile ? 170 + (stackPos * 20) : (stackPos * 25) - 40;
+                rotateZ = 0;
+                scale = isMobile ? 0.75 : 0.85;
+                zIndex = 40 - stackPos;
+                opacity = 1;
+              }
+            } else {
+              rotateZ = diff * (isHovered ? 12 : 7.5);
+              translateX = diff * (isHovered ? 125 : 85);
+              translateY = Math.abs(diff) * Math.abs(diff) * (isHovered ? 18 : 12);
+              scale = isCenter ? 1.06 : Math.max(0.8, 1 - Math.abs(diff) * 0.08);
+              zIndex = 30 - Math.abs(diff) * 5;
+              opacity = isCenter ? 1 : Math.max(0.35, 1 - Math.abs(diff) * 0.25);
+            }
 
             return (
               <div
                 key={idx}
                 onClick={() => {
                   if (isCenter) {
-                    setSelectedImage(item);
+                    if (viewMode === 'fan') setViewMode('split');
                   } else {
                     setActiveIndex(idx);
                   }
@@ -240,44 +285,8 @@ export function CardFanCarousel({ category = 'hero', title, description, classNa
         </div>
       </div>
 
-      {/* Lightbox Modal */}
-      {selectedImage && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4 backdrop-blur-md transition-opacity"
-          onClick={() => setSelectedImage(null)}
-        >
-          <div className="relative max-w-4xl w-full max-h-[90vh] flex flex-col items-center justify-center">
-            <button
-              className="absolute top-4 right-4 z-10 text-white hover:text-primary bg-black/60 rounded-full p-2.5 border border-white/20 transition-colors"
-              onClick={(e) => {
-                e.stopPropagation();
-                setSelectedImage(null);
-              }}
-              aria-label="Close lightbox"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <line x1="18" y1="6" x2="6" y2="18"/>
-                <line x1="6" y1="6" x2="18" y2="18"/>
-              </svg>
-            </button>
-
-            <img
-              src={selectedImage.src}
-              alt={selectedImage.title || "Look"}
-              className="max-w-full max-h-[80vh] object-contain rounded-lg shadow-2xl border border-primary/20"
-              onClick={(e) => e.stopPropagation()}
-            />
-
-            {selectedImage.title && (
-              <div className="mt-4 text-center" onClick={(e) => e.stopPropagation()}>
-                <span className="nav-label text-xs text-primary">{selectedImage.tag}</span>
-                <h4 className="font-display text-2xl text-white font-light mt-1">{selectedImage.title}</h4>
-                <p className="text-sm text-gray-300 font-light mt-1 max-w-md">{selectedImage.subtitle}</p>
-              </div>
-            )}
-          </div>
-        </div>
-      )}
+      {/* Controls Container below the stage */}
     </section>
   );
 }
+
