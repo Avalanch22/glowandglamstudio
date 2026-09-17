@@ -422,7 +422,7 @@ export function Portfolio() {
                   </p>
                 </div>
                 <Button size="sm" className="btn-lipstick self-start sm:self-auto text-xs px-4" asChild>
-                  <a href={`/book-now.html?look=${encodeURIComponent(activeCollection.title)}`}>Book This Collection</a>
+                  <a href={`/book-now?look=${encodeURIComponent(activeCollection.title)}`}>Book This Collection</a>
                 </Button>
               </div>
 
@@ -588,7 +588,7 @@ export function Portfolio() {
                 <div className="pt-6 space-y-3">
                   <Button asChild size="lg" className="btn-lipstick w-full text-xs py-5">
                     <a
-                      href={`/book-now.html?look=${encodeURIComponent(
+                      href={`/book-now?look=${encodeURIComponent(
                         currentPhotos[activePhotoIndex].collection
                       )}`}
                     >

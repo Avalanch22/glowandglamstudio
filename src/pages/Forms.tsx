@@ -228,15 +228,16 @@ function ThemeDatePicker({ value, onChange, required }: ThemeDatePickerProps) {
               aria-hidden="true"
             />
 
-            {/* Bespoke Themed Calendar Popover - 100% Solid Obsidian Surface, Zero Glare, High Contrast */}
-            <motion.div
-              key="calendar-popover"
-              initial={{ opacity: 0, scale: 0.96, y: -6 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.96, y: -6 }}
-              transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
-              className="absolute left-0 top-full mt-2 z-50 w-[310px] sm:w-[340px] rounded-2xl border-2 border-primary/50 bg-[#120F0D] p-4 shadow-[0_30px_70px_rgba(0,0,0,0.98),0_0_0_1px_rgba(255,255,255,0.08)] ring-1 ring-black isolate"
-            >
+            {/* Wrapper div isolates Tailwind transforms from Framer Motion scale animation */}
+            <div className="absolute left-1/2 -translate-x-1/2 sm:left-0 sm:translate-x-0 top-full mt-2 z-50">
+              <motion.div
+                key="calendar-popover"
+                initial={{ opacity: 0, scale: 0.96, y: -6 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.96, y: -6 }}
+                transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+                className="w-[310px] sm:w-[340px] rounded-2xl border-2 border-primary/50 bg-[#120F0D] p-4 shadow-[0_30px_70px_rgba(0,0,0,0.98),0_0_0_1px_rgba(255,255,255,0.08)] ring-1 ring-black isolate"
+              >
               {/* Calendar Header: Month + Year & Nav Arrows */}
               <div className="flex items-center justify-between pb-3 mb-2 border-b border-white/10">
                 <button
@@ -381,6 +382,7 @@ function ThemeDatePicker({ value, onChange, required }: ThemeDatePickerProps) {
                 )}
               </div>
             </motion.div>
+            </div>
           </>
         )}
       </AnimatePresence>
@@ -709,13 +711,14 @@ export function BookNow() {
             >
               {/* Form Header */}
               <div className="border-b border-border/30 pb-4">
-                <div className="flex items-center justify-between mb-1.5">
-                  <span className="nav-label text-[10px] text-primary tracking-[0.25em] uppercase flex items-center gap-1.5">
-                    <Sparkles className="w-3.5 h-3.5 text-primary" />
-                    Atelier Booking · 2026 Calendar
+                <div className="flex items-center justify-between gap-2 mb-1.5">
+                  <span className="nav-label text-[9px] md:text-[10px] text-primary tracking-[0.15em] md:tracking-[0.25em] uppercase flex items-center gap-1.5 line-clamp-1">
+                    <Sparkles className="w-3.5 h-3.5 text-primary flex-shrink-0" />
+                    Atelier Booking
                   </span>
-                  <span className="text-[10px] text-primary/80 border border-primary/40 px-2.5 py-0.5 rounded-full bg-primary/10">
-                    Instant WhatsApp Dispatch
+                  <span className="text-[9px] md:text-[10px] text-primary/80 border border-primary/40 px-2 py-0.5 rounded-full bg-primary/10 whitespace-nowrap flex-shrink-0">
+                    <span className="md:hidden">Fast Booking</span>
+                    <span className="hidden md:inline">Instant WhatsApp Dispatch</span>
                   </span>
                 </div>
                 <h3 className="font-display text-2xl md:text-3xl font-light text-foreground">
@@ -859,7 +862,8 @@ export function BookNow() {
                   size="lg"
                 >
                   <MessageCircle className="w-4 h-4 flex-shrink-0" />
-                  <span>Forward Details to WhatsApp Concierge →</span>
+                  <span className="md:hidden tracking-wider">Send via WhatsApp →</span>
+                  <span className="hidden md:inline">Forward Details to WhatsApp Concierge →</span>
                 </Button>
                 <p className="text-[10px] text-center text-muted-foreground/75 font-light tracking-wide flex items-center justify-center gap-1.5">
                   <ShieldCheck className="w-3 h-3 text-primary" />
